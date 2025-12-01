@@ -1,5 +1,7 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import "../styles/globals.css";
+import Header from "../components/Layers/Header";
+import Footer from "../components/Layers/Footer";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -40,7 +42,11 @@ export default function RootLayout({ children }) {
         <a href="#main-content" className="skip-link">
           Skip to main content
         </a>
-        {children}
+        <Header />
+        <main id="main-content" className="min-h-[60vh]">
+          {children}
+        </main>
+        <Footer />
       </body>
     </html>
   );

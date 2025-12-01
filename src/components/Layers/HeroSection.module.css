@@ -1,0 +1,223 @@
+:root {
+  --brand-main: #A62455;
+  --brand-purple: #7B275C;
+  --brand-blue: #1F3D7A;
+  --accent-orange: #F29A2E;
+  --accent-page: #F9E4C0;
+  --text-main: #1F2933;
+  --bg-hero: #ffe0ef; /* soft pink based on lotus tone */
+}
+
+/* HERO WRAPPER */
+.hero {
+  /* gradient layer ON TOP of mandala image */
+  background:linear-gradient(135deg, #ffd4b0, #ffe0ef),;
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  padding: 3.5rem 1.25rem;
+  position: relative;
+  overflow: hidden;
+}
+
+
+/* mandala image layer */
+.heroMandala {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;       /* Align container to the right */
+  width: 100%;     /* Adjust width as needed */
+  z-index: 0;
+  opacity: 0.35;   /* Use decimal for opacity */
+  pointer-events: none;
+}
+
+.heroMandala img {
+  filter: blur(0px);  /* Add 'px' unit */
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: left; /* Align image content to right */
+  
+}
+
+
+
+/* main content above mandala */
+.inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  gap: 2.5rem;
+  align-items: center;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+  position: relative;
+  z-index: 1;
+}
+
+/* LEFT: TEXT */
+.textBlock {
+  max-width: 540px;
+}
+
+.badge {
+  display: inline-block;
+  padding: 0.25rem 0.75rem;
+  border-radius: 999px;
+  background-color: var(--accent-page);
+  color: var(--brand-main);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  margin-bottom: 0.75rem;
+}
+
+.heading {
+  font-size: clamp(2rem, 3vw + 1rem, 3rem);
+  line-height: 1.1;
+  font-weight: 800;
+  color: #111827;
+  margin-bottom: 0.75rem;
+}
+
+.subheading {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #374151;
+  margin-bottom: 1.5rem;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+/* PRIMARY CTA */
+.primaryButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.75rem 1.5rem;
+  border-radius: 999px;
+  background-color: var(--brand-blue);
+  color: #ffffff;
+  font-weight: 600;
+  text-decoration: none;
+  border: 2px solid var(--brand-blue);
+  transition: background-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0 10px 20px rgba(31, 61, 122, 0.35);
+}
+
+.primaryButton:hover {
+  background-color: var(--brand-purple);
+  transform: translateY(-1px);
+  box-shadow: 0 14px 30px rgba(122, 39, 92, 0.4);
+}
+
+/* SECONDARY CTA */
+.secondaryLink {
+  display: inline-flex;
+  align-items: center;
+  font-weight: 500;
+  text-decoration: none;
+  color: var(--brand-main);
+}
+
+.secondaryLink:hover {
+  text-decoration: underline;
+}
+
+/* RIGHT: VISUAL AREA */
+.visualBlock {
+  position: relative;
+  height: 280px;
+}
+
+.cardBack,
+.cardMiddle,
+.cardFront {
+  position: absolute;
+  border-radius: 1.25rem;
+  overflow: hidden;
+}
+
+/* back layers */
+.cardBack {
+  inset: 20px -40px auto 40px;
+  background-color: rgba(255, 255, 255, 0.25);
+}
+
+.cardMiddle {
+  inset: 10px -20px auto 20px;
+  background-color: rgba(255, 255, 255, 0.6);
+}
+
+/* main card */
+.cardFront {
+  inset: 0;
+  background-color: #fefefe;
+  border: 2px solid var(--accent-page);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.18);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding: 0.75rem 0.75rem 1rem;
+}
+
+/* top badge on card */
+.videoBadge {
+  align-self: flex-start;
+  padding: 0.25rem 0.75rem;
+  border-radius: 999px;
+  background-color: var(--accent-orange);
+  color: #ffffff;
+  font-size: 0.75rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.heroImage {
+  width: 100%;
+  height: 170px;
+  object-fit: cover;
+  border-radius: 0.75rem;
+}
+
+/* small callout under image */
+.smallCallout {
+  margin-top: 0.75rem;
+  font-size: 0.875rem;
+  color: var(--brand-blue);
+  font-weight: 500;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .hero {
+    padding: 2.5rem 1rem;
+  }
+
+  .inner {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .visualBlock {
+    order: -1; /* image above text on small screens */
+    height: 240px;
+  }
+.heroMandala {
+  left: 20vw;   
+}
+
+}
+
+
+
+
+
+
+
+

@@ -1,0 +1,110 @@
+:root {
+  --brand-main: #A62455;
+  --brand-purple: #7B275C;
+  --brand-blue: #1F3D7A;
+  --accent-orange: #F29A2E;
+  --accent-page: #F9E4C0;
+  --text-main: #1F2933;
+  --bg-hero: #ffe0ef; /* soft pink based on lotus tone */
+}
+
+/* wrapper */
+.section {
+  padding: 3.5rem 1.5rem 4rem;
+  background-color: #f9fafb;
+   background:linear-gradient(135deg, #ffd4b0, #ffe0ef);
+  
+}
+
+.inner {
+  max-width: 1120px;
+  margin: 0 auto;
+}
+
+/* heading */
+.heading {
+  text-align: center;
+  font-size: clamp(1.6rem, 2.2vw, 2rem);
+  font-weight: 800;
+  color: var(--brand-blue);
+  margin-bottom: 2rem;
+}
+
+/* cards row */
+.cardsRow {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+/* single card */
+.card {
+  position: relative;
+  border-radius: 1rem;
+  overflow: hidden;
+  min-height: 180px;
+  cursor: pointer;
+}
+
+/* blue gradient background layer */
+.cardBg {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(145deg, rgba(31, 61, 122, 0.95), rgba(122, 39, 92, 0.95)),
+    radial-gradient(circle at top left, rgba(242, 154, 46, 0.4), transparent 55%);
+  background-blend-mode: overlay;
+}
+
+/* content */
+.cardContent {
+  position: relative;
+  z-index: 1;
+  height: 100%;
+  padding: 1.25rem 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: #ffffff;
+}
+
+/* icon */
+.icon {
+  width: 40px;
+  height: 40px;
+  margin-bottom: 0.75rem;
+}
+
+/* stacked title lines */
+.cardTitleLine {
+  display: block;
+  font-weight: 700;
+  font-size: 0.95rem;
+  line-height: 1.2;
+}
+
+/* hover */
+.card:hover .cardBg {
+  transform: scale(1.03);
+  transition: transform 0.18s ease-out, box-shadow 0.18s ease-out;
+  box-shadow: 0 18px 40px rgba(31, 61, 122, 0.45);
+}
+
+/* responsive */
+@media (max-width: 900px) {
+  .cardsRow {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 600px) {
+  .cardsRow {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .card {
+    min-height: 150px;
+  }
+}

@@ -1,0 +1,41 @@
+.footer {
+  background-color: #f9fafb; /* Equivalent to bg-gray-50 */
+  border-top: 1px solid #e5e7eb; /* Equivalent to border-t */
+  margin-top: 3rem; /* Equivalent to mt-12 */
+}
+
+.footerContainer {
+  max-width: 1280px; /* Approximate container max width */
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1rem; /* px-4 */
+  padding-right: 1rem; /* px-4 */
+  padding-top: 1.5rem; /* py-6 */
+  padding-bottom: 1.5rem; /* py-6 */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.875rem; /* text-sm */
+}
+
+.textGray600 {
+  color: #4b5563; /* Equivalent to text-gray-600 */
+}
+
+.link {
+  color: #4b5563; /* text-gray-600 */
+  text-decoration: none;
+  transition: text-decoration 0.3s ease;
+}
+
+.link:hover {
+  text-decoration: underline;
+}
+
+.flexGap4 {
+  display: flex;
+  gap: 1rem; /* gap-4 */
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}

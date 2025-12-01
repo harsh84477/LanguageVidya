@@ -1,0 +1,130 @@
+:root {
+  --brand-main: #A62455;
+  --brand-purple: #7B275C;
+  --brand-blue: #1F3D7A;
+  --accent-orange: #F29A2E;
+  --accent-page: #F9E4C0;
+  --text-main: #1F2933;
+  --bg-hero: #ffe0ef;
+}
+
+.section {
+  padding: 4rem 1.5rem;
+  background: linear-gradient(135deg, #ffe0ef, #ffd4b0);
+}
+
+.grid {
+  max-width: 1120px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.5rem;
+}
+
+/* text cards */
+.card {
+  background-color: #ffffff;
+  border-radius: 1rem;
+  padding: 1.75rem 1.75rem 1.5rem;
+  box-shadow: 0 18px 40px rgba(15, 23, 42, 0.14);
+  border: 1px solid rgba(166, 36, 85, 0.12);
+}
+
+.heading {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--brand-blue);
+  margin-bottom: 1.25rem;
+}
+
+/* list with bullet icons */
+.list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 0.9rem;
+}
+
+.list li {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 0.75rem;
+  align-items: flex-start;
+}
+
+.bullet {
+  width: 20px;
+  height: 20px;
+  border-radius: 999px;
+  border: 2px solid var(--accent-orange);
+  position: relative;
+  margin-top: 2px;
+}
+
+.bullet::after {
+  content: "";
+  position: absolute;
+  inset: 4px;
+  border-radius: inherit;
+  background: var(--accent-orange);
+}
+
+.pointTitle {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text-main);
+  margin-bottom: 0.1rem;
+}
+
+.pointText {
+  font-size: 0.875rem;
+  color: #4b5563;
+  line-height: 1.5;
+}
+
+/* image cards */
+.imageCard {
+  position: relative;
+  border-radius: 1rem;
+  overflow: hidden;
+  box-shadow: 0 18px 40px rgba(15, 23, 42, 0.14);
+}
+
+.image {
+  object-fit: cover;
+}
+
+/* hover states */
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 22px 45px rgba(31, 61, 122, 0.25);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* responsive */
+@media (max-width: 900px) {
+  
+
+.imageCard {
+  position: relative;
+  border-radius: 1rem;
+  overflow: hidden;
+  box-shadow: 0 18px 40px rgba(15, 23, 42, 0.14);
+  min-height: 260px;           /* important so Image has height */
+}
+
+ .image {
+  object-fit: cover; }
+
+  .grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  /* desired order on mobile:
+     1) image 1, 2) card 1, 3) image 2, 4) card 2 */
+  .block1 { order: 2; }
+  .block2 { order: 1; }
+  .block3 { order: 3; }
+  .block4 { order: 4; }
+}
