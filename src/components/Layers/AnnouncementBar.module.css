@@ -1,18 +1,14 @@
 .barWrapper {
   width: 100%;
-  background-color: #fcb174; /* Equivalent to bg-blue-600 */
-  color: #ffffff;
-  font-size: 0.875rem; /* Equivalent to text-sm */
+  background-color: #1F3D7A;  /* deep brand blue */
+  color: #F9FAFB;             /* almost white text */
+  font-size: 0.875rem;
 }
 
 .barInner {
-  max-width: 1280px; /* Approximate container max width */
-  margin-left: auto;
-  margin-right: auto;
-  padding-left: 1rem; /* px-4 */
-  padding-right: 1rem; /* px-4 */
-  padding-top: 0.5rem; /* py-2 */
-  padding-bottom: 0.5rem; /* py-2 */
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0.5rem 1rem;
   text-align: center;
   overflow: hidden;
 }

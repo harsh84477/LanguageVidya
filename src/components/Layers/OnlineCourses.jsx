@@ -5,19 +5,19 @@ import styles from "./OnlineCourses.module.css";
 const courses = [
   {
     title: "Basic\nEnglish\nCourse",
-    icon: "/icons/course-basic.svg",
+    icon: "/uploads/icons/potted-plant.png",
   },
   {
     title: "Advanced\nEnglish\nCourse",
-    icon: "/icons/course-advanced.svg",
+    icon: "/uploads/icons/crown.png",
   },
   {
     title: "Business\nEnglish\nCourse",
-    icon: "/icons/course-business.svg",
+    icon: "/uploads/icons/briefcase.png",
   },
   {
     title: "Spoken English\nfor Kids\nCourse",
-    icon: "/icons/course-kids.svg",
+    icon: "/uploads/icons/student.png",
   },
 ];
 

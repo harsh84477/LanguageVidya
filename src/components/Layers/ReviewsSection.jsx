@@ -2,7 +2,7 @@
 
 import styles from "./ReviewsSection.module.css";
 
-const reviews = [
+const REVIEWS = [
   {
     name: "Aarav Singh",
     title: "Great for daily practice",
@@ -33,30 +33,49 @@ const reviews = [
   },
 ];
 
-export default function ReviewsSection() {
+function Stars({ rating }) {
   return (
-    <section className={styles.section}>
+    <div className={styles.stars} aria-label={`${rating} stars`}>
+      {Array.from({ length: rating }).map((_, i) => (
+        <span key={i} aria-hidden="true">
+          ★
+        </span>
+      ))}
+    </div>
+  );
+}
+
+export default function ReviewsSection() {
+  const scrollingReviews = [...REVIEWS, ...REVIEWS];
+
+  return (
+    <section className={styles.section} aria-labelledby="reviews-heading">
       <div className={styles.inner}>
-        <h2 className={styles.heading}>Hear it from Language Vidya learners</h2>
+        <h2 id="reviews-heading" className={styles.heading}>
+          Hear it from Language Vidya learners
+        </h2>
 
-        <div className={styles.grid}>
-          {reviews.map((review) => (
-            <article key={review.name + review.timeAgo} className={styles.card}>
-              <div className={styles.stars}>
-                {Array.from({ length: review.rating }).map((_, i) => (
-                  <span key={i}>★</span>
-                ))}
-              </div>
-
-              <h3 className={styles.title}>{review.title}</h3>
-              <p className={styles.text}>{review.text}</p>
-
-              <div className={styles.footer}>
-                <span className={styles.name}>{review.name}</span>
-                <span className={styles.time}>{review.timeAgo}</span>
-              </div>
-            </article>
-          ))}
+        <div className={styles.sliderArea}>
+          <div
+            className={styles.grid}
+            role="region"
+            aria-label="Reviews carousel"
+          >
+            {scrollingReviews.map((review, index) => (
+              <article
+                key={`${review.name}-${review.timeAgo}-${index}`}
+                className={styles.card}
+              >
+                <Stars rating={review.rating} />
+                <h3 className={styles.title}>{review.title}</h3>
+                <p className={styles.text}>{review.text}</p>
+                <footer className={styles.footer}>
+                  <span className={styles.name}>{review.name}</span>
+                  <time className={styles.time}>{review.timeAgo}</time>
+                </footer>
+              </article>
+            ))}
+          </div>
         </div>
 
         <p className={styles.note}>

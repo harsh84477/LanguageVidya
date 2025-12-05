@@ -1,18 +1,23 @@
 :root {
-  --brand-main: #A62455;
+  --brand-main: #a62455;
   --brand-purple: #7B275C;
   --brand-blue: #1F3D7A;
   --accent-orange: #F29A2E;
   --accent-page: #F9E4C0;
-  /* --text-main: #F9FAFB; */
+  --text-main: #1F2933;
 }
 
-/* full-width dark gradient */
+/* full-width light gradient */
 .section {
-  padding: 4rem 1.75rem 4.5rem;
-  background: radial-gradient(circle at top left, #ffd4b0 0, #1b1230 40%, #050816 80%);
-  color: var(--text-main);
+  z-index: 10000;
+  /* padding: 4rem 1.75rem 4.5rem; */
+  /* background: linear-gradient(135deg, #ffd4b0 0%, #ffe0ef 100%); */
+  /* color: var(--text-main); */
+  /* position: relative;      for mandala */
+  /* overflow: hidden;        keep mandala inside */
 }
+
+/* mandala layer */
 
 .inner {
   max-width: 1120px;
@@ -21,6 +26,8 @@
   grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr);
   gap: 3rem;
   align-items: center;
+  position: relative;   /* above mandala */
+  z-index: 1;
 }
 
 /* LEFT */
@@ -33,14 +40,14 @@
   font-size: clamp(2.2rem, 3.2vw + 1rem, 3rem);
   font-weight: 800;
   letter-spacing: 0.02em;
-  color: #fdf2ff;
+  color: #b10a4a;
   margin-bottom: 1rem;
 }
 
 .subheading {
   font-size: 1rem;
   line-height: 1.7;
-  color: #e5e7eb;
+  color: #374151;
   margin-bottom: 1.6rem;
 }
 
@@ -56,7 +63,7 @@
   position: relative;
   padding-left: 1.4rem;
   font-size: 0.95rem;
-  color: #e5e7eb;
+  color: #4b5563;
 }
 
 .bullets li::before {
@@ -71,13 +78,14 @@
 /* RIGHT CARD */
 
 .card {
-  background: radial-gradient(circle at top, rgba(249, 228, 192, 0.2), rgba(5, 8, 22, 0.98));
+  background: #ffffff;
   border-radius: 1.5rem;
-  border: 1px solid rgba(249, 228, 192, 0.18);
-  box-shadow: 0 28px 60px rgba(0, 0, 0, 0.65);
+  border: 1px solid rgba(166, 36, 85, 0.12);
+  box-shadow: 0 20px 50px rgba(15, 23, 42, 0.16);
   overflow: hidden;
   max-width: 380px;
   justify-self: end;
+  color: var(--text-main);
 }
 
 .cardHeader {
@@ -86,6 +94,7 @@
   font-weight: 700;
   text-align: center;
   font-size: 1rem;
+  color: #f9fafb;
 }
 
 .cardBody {
@@ -98,17 +107,17 @@
   height: 130px;
   margin: 0 auto 1.25rem;
   border-radius: 999px;
-  border: 3px solid rgba(249, 228, 192, 0.7);
-  box-shadow: 0 0 25px rgba(242, 154, 46, 0.45);
+  border: 3px solid #ffe0ef;
+  box-shadow: 0 0 25px rgba(242, 154, 46, 0.35);
   display: flex;
   align-items: center;
   justify-content: center;
-  background: radial-gradient(circle at center, #ffe0ef, #7b275c);
+  background: radial-gradient(circle at center, #ffe0ef, #ffd4b0);
 }
 
 .status {
   font-size: 0.95rem;
-  color: #e5e7eb;
+  color: #4b5563;
   margin-bottom: 1.25rem;
 }
 
@@ -122,25 +131,24 @@
   border-radius: 999px;
   border: none;
   background: linear-gradient(135deg, #ffd4b0, #ffe0ef);
-  color: #1f2937;
+  color: #111827;
   font-weight: 700;
   font-size: 0.98rem;
   cursor: pointer;
-  box-shadow: 0 18px 38px rgba(166, 36, 85, 0.55);
-  transition: transform 0.18s ease, box-shadow 0.18s ease,
-    filter 0.18s ease;
+  box-shadow: 0 18px 38px rgba(166, 36, 85, 0.35);
+  transition: transform 0.18s ease, box-shadow 0.18s ease, filter 0.18s ease;
 }
 
 .ctaButton:hover {
   transform: translateY(-2px);
-  box-shadow: 0 24px 48px rgba(166, 36, 85, 0.65);
+  box-shadow: 0 24px 48px rgba(166, 36, 85, 0.5);
   filter: brightness(1.03);
 }
 
 .cardNote {
   margin-top: 0.9rem;
   font-size: 0.8rem;
-  color: #9ca3af;
+  color: #6b7280;
 }
 
 /* responsive */
@@ -152,6 +160,12 @@
 
   .card {
     justify-self: center;
+  }
+
+  .sectionMandala {
+    left: 30%;
+    width: 90%;
+    opacity: 0.18;
   }
 }
 

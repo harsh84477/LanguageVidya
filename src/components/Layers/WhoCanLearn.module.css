@@ -12,7 +12,21 @@
 
 .section {
   padding: 4rem 1.5rem;
-  background: linear-gradient(135deg, #ffe0ef, #ffd4b0);
+  /* background: linear-gradient(135deg, #ffe0ef, #ffd4b0); */
+  position: relative;     /* for mandala */
+  overflow: hidden;       /* keep mandala inside */
+}
+
+/* mandala background layer */
+.sectionMandala {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 55%;
+  width: 70%;
+  z-index: 0;
+  opacity: 0.22;
+  pointer-events: none;
 }
 
 .inner {
@@ -22,6 +36,8 @@
   grid-template-columns: minmax(0, 1.1fr) minmax(0, 2fr);
   align-items: center;
   gap: 3rem;
+  position: relative;   /* above mandala */
+  z-index: 1;
 }
 
 /* LEFT: "You can learn" */
@@ -222,5 +238,11 @@
 
   .courseGrid {
     grid-template-columns: minmax(0, 1fr);
+  }
+
+  .sectionMandala {
+    left: 30%;
+    width: 90%;
+    opacity: 0.18;
   }
 }

@@ -1,13 +1,14 @@
 "use client";
 
+import Image from "next/image";
 import styles from "./MotivationSection.module.css";
 
-const languages = [
-  { code: "EN", name: "English" },
-  { code: "HI", name: "Hindi" },
-  { code: "ES", name: "Spanish" },
-  { code: "FR", name: "French" },
-  { code: "JP", name: "Japanese" },
+const courses = [
+  { code: "B1", name: "English for Beginners" },
+  { code: "ST", name: "English for Students" },
+  { code: "AD", name: "English Advanced" },
+  { code: "SP", name: "English Spoken" },
+  { code: "INT", name: "English for Foreigners" },
 ];
 
 export default function MotivationSection() {
@@ -21,19 +22,21 @@ export default function MotivationSection() {
             waiting for? Start with us today!
           </h2>
           <p className={styles.subheading}>
-            Build real confidence in English and other languages with guided
-            practice, clear feedback, and courses designed for your goals.
+            Build real confidence in English with guided practice, clear
+            feedback, and structured courses designed for every level.
           </p>
         </div>
 
-        {/* Right language list */}
+        {/* Right course list */}
         <div className={styles.right}>
-          {languages.map((lang) => (
-            <button key={lang.code} className={styles.langPill} type="button">
-              <span className={styles.flagCircle}>
-                {lang.code}
-              </span>
-              <span className={styles.langName}>{lang.name}</span>
+          {courses.map((course) => (
+            <button
+              key={course.code}
+              className={styles.langPill}
+              type="button"
+            >
+              <span className={styles.flagCircle}>{course.code}</span>
+              <span className={styles.langName}>{course.name}</span>
             </button>
           ))}
         </div>

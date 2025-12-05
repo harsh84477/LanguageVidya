@@ -5,61 +5,31 @@
   --accent-orange: #F29A2E;
   --accent-page: #F9E4C0;
   --text-main: #1F2933;
-  --bg-hero: #ffe0ef; /* soft pink based on lotus tone */
+  --bg-hero: #ffe0ef;
 }
 
 /* HERO WRAPPER */
 .hero {
-  /* gradient layer ON TOP of mandala image */
-  background:linear-gradient(135deg, #ffd4b0, #ffe0ef),;
-  background-size: 100%;
-  background-repeat: no-repeat;
-  background-position: center;
-  padding: 3.5rem 1.25rem;
   position: relative;
   overflow: hidden;
+  background: linear-gradient(135deg, #ffd4b0, var(--bg-hero));
+  padding: clamp(2.5rem, 6vw, 4.5rem) clamp(1rem, 4vw, 3rem);
 }
 
-
-/* mandala image layer */
-.heroMandala {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 50%;       /* Align container to the right */
-  width: 100%;     /* Adjust width as needed */
-  z-index: 0;
-  opacity: 0.35;   /* Use decimal for opacity */
-  pointer-events: none;
-}
-
-.heroMandala img {
-  filter: blur(0px);  /* Add 'px' unit */
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: left; /* Align image content to right */
-  
-}
-
-
-
-/* main content above mandala */
+/* MAIN GRID */
 .inner {
+  position: relative;
+  z-index: 1;
   max-width: 1200px;
   margin: 0 auto;
   display: grid;
-  gap: 2.5rem;
-  align-items: center;
+  gap: clamp(1.75rem, 4vw, 3rem);
   grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
-  position: relative;
-  z-index: 1;
+  align-items: center;
 }
 
 /* LEFT: TEXT */
-.textBlock {
-  max-width: 540px;
-}
+.textBlock { max-width: 540px; }
 
 .badge {
   display: inline-block;
@@ -83,7 +53,7 @@
 }
 
 .subheading {
-  font-size: 1rem;
+  font-size: clamp(0.95rem, 0.5vw + 0.9rem, 1.1rem);
   line-height: 1.6;
   color: #374151;
   margin-bottom: 1.5rem;
@@ -95,7 +65,7 @@
   gap: 0.75rem;
 }
 
-/* PRIMARY CTA */
+/* CTAs */
 .primaryButton {
   display: inline-flex;
   align-items: center;
@@ -107,17 +77,17 @@
   font-weight: 600;
   text-decoration: none;
   border: 2px solid var(--brand-blue);
-  transition: background-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+  transition: all 0.2s ease;
   box-shadow: 0 10px 20px rgba(31, 61, 122, 0.35);
 }
 
 .primaryButton:hover {
   background-color: var(--brand-purple);
+  border-color: var(--brand-purple);
   transform: translateY(-1px);
   box-shadow: 0 14px 30px rgba(122, 39, 92, 0.4);
 }
 
-/* SECONDARY CTA */
 .secondaryLink {
   display: inline-flex;
   align-items: center;
@@ -126,16 +96,15 @@
   color: var(--brand-main);
 }
 
-.secondaryLink:hover {
-  text-decoration: underline;
-}
+.secondaryLink:hover { text-decoration: underline; }
 
 /* RIGHT: VISUAL AREA */
 .visualBlock {
   position: relative;
-  height: 280px;
+  height: clamp(230px, 32vw, 320px);
 }
 
+/* Card Layers */
 .cardBack,
 .cardMiddle,
 .cardFront {
@@ -144,7 +113,6 @@
   overflow: hidden;
 }
 
-/* back layers */
 .cardBack {
   inset: 20px -40px auto 40px;
   background-color: rgba(255, 255, 255, 0.25);
@@ -155,7 +123,6 @@
   background-color: rgba(255, 255, 255, 0.6);
 }
 
-/* main card */
 .cardFront {
   inset: 0;
   background-color: #fefefe;
@@ -167,7 +134,6 @@
   padding: 0.75rem 0.75rem 1rem;
 }
 
-/* top badge on card */
 .videoBadge {
   align-self: flex-start;
   padding: 0.25rem 0.75rem;
@@ -186,7 +152,6 @@
   border-radius: 0.75rem;
 }
 
-/* small callout under image */
 .smallCallout {
   margin-top: 0.75rem;
   font-size: 0.875rem;
@@ -194,30 +159,206 @@
   font-weight: 500;
 }
 
-/* RESPONSIVE */
-@media (max-width: 768px) {
-  .hero {
-    padding: 2.5rem 1rem;
-  }
+/* RESPONSIVE MANDALAS - Single class system */
+.heroMandala {
+  position: absolute;
+  inset-inline: 1.5rem;
+  width: clamp(620px, 80vw, 920px);
+  height: clamp(620px, 80vw, 920px);
+  pointer-events: none;
+  z-index: 0;
+}
 
+/* Position variants - Desktop */
+.heroMandala[data-pos="top"] {
+  top: -15rem;
+  opacity: 0.35;
+  transform: translateX(70%);
+}
+
+.heroMandala[data-pos="bottom1"] {
+  top: 35rem;
+  opacity: 0.35;
+  transform: translateX(-30%);
+}
+
+.heroMandala[data-pos="bottom2"] {
+  top: 85rem;
+  opacity: 0.35;
+  transform: translateX(70%);
+}
+
+.heroMandala[data-pos="bottom3"] {
+  top: 135rem;
+  opacity: 0.35;
+  transform: translateX(-30%);
+}
+
+.heroMandala[data-pos="bottom4"] {
+  top: 185rem;
+  opacity: 0.35;
+  transform: translateX(70%);
+}
+
+.heroMandala[data-pos="bottom5"] {
+  top: 235rem;
+  opacity: 0.35;
+  transform: translateX(-30%);
+}
+
+.heroMandala[data-pos="bottom6"] {
+  top: 280rem;
+  opacity: 0.35;
+  transform: translateX(70%);
+}
+
+/* TABLET (900px and down) */
+@media (max-width: 900px) {
   .inner {
-    grid-template-columns: minmax(0, 1fr);
+    grid-template-columns: 1fr;
   }
 
   .visualBlock {
-    order: -1; /* image above text on small screens */
-    height: 240px;
+    order: -1;
+    height: clamp(220px, 40vw, 280px);
   }
-.heroMandala {
-  left: 20vw;   
-}
+
+  .heroMandala[data-pos="top"] {
+    top: -12rem;
+    transform: translateX(-32%);
+  }
+
+  .heroMandala[data-pos="bottom1"] {
+    top: 22rem;
+  }
+
+  .heroMandala[data-pos="bottom2"] {
+    top: 72rem;
+  }
+
+  .heroMandala[data-pos="bottom3"] {
+    top: 122rem;
+  }
+
+  .heroMandala[data-pos="bottom4"] {
+    top: 172rem;
+  }
+
+  .heroMandala[data-pos="bottom5"] {
+    top: 222rem;
+  }
+  .heroMandala[data-pos="bottom6"] {
+    top: 272rem;
+  }
+.heroMandala[data-pos="bottom7"] {
+  opacity: 0.35;
+    top: 322rem;
+  }
+
+  .heroMandala[data-pos="bottom8"] {
+    opacity: 0.35;
+    top: 372.75rem;
+  }
+
+  .heroMandala[data-pos="bottom9"] {
+    opacity: 0.35;
+    top: 422.75rem;
+  }
+
+  .heroMandala[data-pos="bottom10"] {
+    opacity: 0.35;
+    top: 472.75rem;
+  }
+
+  .heroMandala[data-pos="bottom11"] {
+    opacity: 0.35;
+    top: 522.75rem;
+  }
+  .heroMandala[data-pos="bottom12"] {
+    opacity: 0.35;
+    top: 572.75rem;
+  }
 
 }
 
+/* MOBILE (540px and down) */
+@media (max-width: 540px) {
+  .hero {
+    padding-inline: 1rem;
+  }
 
+  .heroMandala[data-pos="top"] {
+    top: -14.33rem;
+    transform: translateX(7%);
+  }
 
+  .heroMandala[data-pos="bottom1"] {
+    top: 32.75rem;
+    transform: translateX(-52%);
+  }
 
+  .heroMandala[data-pos="bottom2"] {
+    top: 82.75rem;
+    transform: translateX(7%);
+  }
 
+  .heroMandala[data-pos="bottom3"] {
+    top: 132.75rem;
+    transform: translateX(-52%);
+  }
 
+  .heroMandala[data-pos="bottom4"] {
+    top: 182.75rem;
+    transform: translateX(7%);
+  }
+  .heroMandala[data-pos="bottom5"] {
+    top: 232.75rem;
+    transform: translateX(-52%);
+  }
+   .heroMandala[data-pos="bottom6"] {
+    top: 282.75rem;
+    transform: translateX(7%);
+  }
+  .heroMandala[data-pos="bottom7"] {
+    top: 322rem;
+     transform: translateX(-52%);
+  }
 
+  .heroMandala[data-pos="bottom8"] {
+    top: 372.75rem;
+    transform: translateX(7%);
+  }
 
+  .heroMandala[data-pos="bottom9"] {
+    top: 422.75rem;
+     transform: translateX(-52%);
+  }
+
+  .heroMandala[data-pos="bottom10"] {
+    top: 472.75rem;
+    transform: translateX(7%);
+  }
+
+  .heroMandala[data-pos="bottom11"] {
+    top: 522.75rem;
+     transform: translateX(-52%);
+  }
+  .heroMandala[data-pos="bottom12"] {
+    top: 572.75rem;
+    transform: translateX(7%);
+  }
+  
+  /* Hide card layers on small mobile */
+  .cardBack,
+  .cardMiddle {
+    display: none;
+  }
+}
+
+/* EXTRA SMALL MOBILE (360px and down) */
+@media (max-width: 360px) {
+  .heroMandala {
+    width: clamp(300px, 90vw, 400px);
+    height: clamp(300px, 90vw, 400px);
+  }
+}

@@ -1,17 +1,20 @@
 "use client";
 
+import Image from "next/image"; 
 import styles from "./LookingFor.module.css";
 
 const options = [
-  { label: "Daily Conversations", icon: "/icons/daily.svg" },
-  { label: "Fluent Speaking", icon: "/icons/fluent.svg" },
-  { label: "Talking with Client", icon: "/icons/client.svg" },
-  { label: "Shine in Interview", icon: "/icons/interview.svg" },
+  { label: "Daily Conversations", icon: "/uploads/icons/plantO.png" },
+  { label: "Fluent Speaking", icon: "/uploads/icons/briefcaseO.png" },
+  { label: "Talking with Client", icon: "/uploads/icons/Man-o.png" },
+  { label: "Shine in Interview", icon: "/uploads/icons/power-hitO.png" },
 ];
 
 export default function LookingFor() {
   return (
     <section className={styles.section}>
+      
+     
       <div className={styles.inner}>
         <h2 className={styles.heading}>What are you looking for?</h2>
 

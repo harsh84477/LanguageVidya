@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Image from "next/image";
 import styles from "./WhoCanLearn.module.css";
 
 const courses = [
@@ -13,37 +14,37 @@ const courses = [
 const learners = [
   {
     title: "Working professionals",
-    icon: "/uploads/professional.png",
+    icon: "/uploads/icons/professional.png",
     description:
       "Improve your workplace English, emails, and presentations to grow in your career.",
   },
   {
     title: "Students",
-    icon: "/uploads/graduated.png",
+    icon: "/uploads/icons/graduated.png",
     description:
       "Build strong speaking and writing skills for school, college, and exams.",
   },
   {
     title: "Homemakers",
-    icon: "/uploads/home.png",
+    icon: "/uploads/icons/home.png",
     description:
       "Speak confidently in daily situations like markets, travel, and parent–teacher meetings.",
   },
   {
     title: "Business owners",
-    icon: "/uploads/owner.png",
+    icon: "/uploads/icons/owner.png",
     description:
       "Communicate clearly with clients, teams, and partners across cities and countries.",
   },
   {
     title: "Job seekers",
-    icon: "/uploads/cv.png",
+    icon: "/uploads/icons/cv.png",
     description:
       "Prepare for interviews, group discussions, and professional conversations.",
   },
   {
     title: "Freelancers",
-    icon: "/uploads/self-employed.png",
+    icon: "/uploads/icons/self-employed.png",
     description:
       "Work smoothly with global clients by improving spoken and written English.",
   },
@@ -53,10 +54,10 @@ export default function WhoCanLearn() {
   const [index, setIndex] = useState(0);
 
   useEffect(() => {
-    const id = setInterval(() => {
-      setIndex((prev) => (prev + 1) % learners.length);
-    }, 9000);
-
+    const id = setInterval(
+      () => setIndex((prev) => (prev + 1) % learners.length),
+      9000
+    );
     return () => clearInterval(id);
   }, []);
 
@@ -68,6 +69,7 @@ export default function WhoCanLearn() {
 
   return (
     <section className={styles.section}>
+      {/* mandala background layer */}
       <div className={styles.inner}>
         {/* LEFT: You can learn */}
         <div className={styles.leftText}>
