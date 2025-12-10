@@ -1,295 +1,516 @@
-:root {
-  --brand-main: #a62455;
-  --brand-purple: #7b275c;
-  --brand-blue: #1f3d7a;
-  --accent-orange: #f29a2e;
-  --accent-page: #f9e4c0;
-  --text-main: #1f2933;
+/* ========================================
+   TIMELINE SECTION - MODERN WITH TOOLTIPS
+   ======================================== */
 
-  --bg-top: #a62455;
-  --bg-bottom: #fff7eb;
-}
-
-/* OUTER BLOCK */
 .section {
-  background: #fdf2f8;
-  border-radius: 1.5rem;
+  margin-top: 20px;
+  margin-bottom: 20px;
+
+  /* Glassmorphism background */
+  background: #ffe4e4b6;
+  backdrop-filter: blur(28px);
+  -webkit-backdrop-filter: blur(28px);
+
+  /* Glass border + inner shine */
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.32);
+  box-shadow:
+    0 14px 40px rgba(0, 0, 0, 0.16),
+    inset 0 1px 0 rgba(255, 255, 255, 0.45);
+
   position: relative;
-  overflow: hidden;
-  box-shadow: 0 24px 60px rgba(15, 23, 42, 0.16);
-  margin: clamp(2.5rem, 5vw, 3rem) clamp(1rem, 4vw, 1.5rem);
+  overflow: visible;
+  padding: clamp(3rem, 6vw, 4rem) clamp(1.5rem, 4vw, 3rem);
 }
 
-/* TOP BAND (unchanged) */
-.topBand {
-  background: linear-gradient(90deg, var(--brand-main), var(--brand-purple));
-  padding: 1.8rem clamp(1.5rem, 4vw, 1.9rem) 1.5rem;
-  color: #f9fafb;
+.section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at top left,
+    rgba(255, 255, 255, 0.45),
+    transparent 55%);
+  pointer-events: none;
 }
 
-.topInner {
-  max-width: 1120px;
-  margin: 0 auto;
+/* Header */
+.header {
+  text-align: center;
+  margin-bottom: clamp(2rem, 4vw, 3rem);
+  position: relative;
+  z-index: 2;
+}
+
+.badge {
+  display: inline-block;
+  padding: 0.5rem 1.25rem;
+  background: linear-gradient(135deg, rgba(166, 36, 85, 0.08), rgba(123, 39, 92, 0.08));
+  border: 1px solid rgba(166, 36, 85, 0.15);
+  border-radius: 50px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #a62455;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 1rem;
 }
 
 .heading {
-  font-size: clamp(1.7rem, 3vw, 2rem);
+  font-size: clamp(1.6rem, 4vw, 2.8rem);
   font-weight: 800;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  margin-bottom: 0.55rem;
+  color: #1f2937;
+  margin: 0 0 0.75rem;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
 }
 
-.topText {
-  max-width: 640px;
-  font-size: clamp(0.9rem, 1.7vw, 0.98rem);
-  line-height: 1.7;
+.highlight {
+  background: linear-gradient(135deg, #a62455 0%, #f97316 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
-/* BOTTOM TIMELINE AREA */
-.bottom {
-  background: var(--bg-bottom);
-  padding: clamp(2rem, 4vw, 2.6rem) clamp(1.4rem, 4vw, 1.9rem)
-           clamp(2.4rem, 4vw, 2.9rem);
+.subheading {
+  font-size: clamp(0.9rem, 2vw, 1.1rem);
+  color: #64748b;
+  margin: 0;
+  max-width: 450px;
+  margin-inline: auto;
 }
 
-/* 🎨 Horizontal timeline layout */
+/* Main container with timeline */
+.timelineSection {
+  position: relative;
+  width: 100%;
+}
+
 .timeline {
-  max-width: 1120px;
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: repeat(6, minmax(0, 1fr));
-  gap: clamp(1.25rem, 2vw, 1.75rem);
   position: relative;
 }
 
-/* 🎨 Soft connecting line */
-.timeline::before {
-  content: "";
+/* Horizontal track */
+.track {
   position: absolute;
-  top: 40px;
   left: 0;
   right: 0;
-  height: 2px;
-  margin-inline: 12px;
-  background: linear-gradient(90deg,
-    rgba(166, 36, 85, 0.12),
-    rgba(31, 61, 122, 0.35),
-    rgba(166, 36, 85, 0.12)
-  );
-  z-index: 0;
+  top: 40px;
+  height: 3px;
+  background: rgba(166, 36, 85, 0.1);
+  border-radius: 10px;
+  overflow: hidden;
 }
 
-/* Step card – raised on hover */
-.stepCard {
-  position: relative;
-  z-index: 1;
+.trackFill {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    #a62455 0%,
+    #7b275c 30%,
+    #e879a9 60%,
+    #f97316 100%
+  );
+  animation: shimmer 3s ease-in-out infinite;
+}
+
+@keyframes shimmer {
+  0%, 100% {
+    opacity: 0.6;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+/* Steps container */
+.steps {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 0.5rem;
+  padding: 0;
+}
+
+/* Individual step */
+.step {
+  flex: 1;
   display: flex;
   flex-direction: column;
-  align-items: stretch;
-  gap: 0.75rem;
-  padding: 1.2rem 1rem 1.4rem;
-  border-radius: 1.25rem;
-  background: rgba(255, 255, 255, 0.9);
-  box-shadow: 0 10px 24px rgba(15, 23, 42, 0.08);
-  transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
-}
-
-.stepCard:hover {
-  transform: translateY(-6px); /* 🎨 raised hover card */
-  box-shadow: 0 20px 40px rgba(15, 23, 42, 0.16);
-  background: #ffffff;
-}
-
-/* Header: icon + connector mask */
-.stepHeader {
-  position: relative;
-  display: flex;
   align-items: center;
-  justify-content: flex-start;
 }
 
-/* Gradient circular icon – consistent theme */
-.iconCircle {
-  width: 64px;
-  height: 64px;
-  border-radius: 999px;
-  background: conic-gradient(
-    from 180deg,
-    #ffe0ef,
-    #ffd4b0,
-    #fef3c7,
-    #ffe0ef
-  );
+/* Node (icon + number circle) */
+.node {
+  position: relative;
+  width: 70px;
+  height: 70px;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 14px 32px rgba(166, 36, 85, 0.35);
-  border: 3px solid #ffffff;
+  margin-bottom: 0;
+}
+
+.icon {
+  width: 60%;
+  height: 60%;
   position: relative;
+  z-index: 3;
+  filter: drop-shadow(0 2px 4px rgba(166, 36, 85, 0.1)) brightness(0) invert(1);
+  transition: transform 0.3s ease;
+  object-fit: contain;
 }
 
-.iconNumber {
-  font-size: 1.15rem;
+.node:hover .icon {
+  transform: scale(1.1);
+}
+
+.step:hover .icon {
+  transform: scale(1.3) rotate(-10deg);
+}
+
+.ring {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: rgb(166, 36, 86);
+  border: 2px solid rgba(166, 36, 85, 0.15);
+  transition: all 0.3s ease;
+}
+
+.step:hover .ring {
+  transform: scale(1.15);
+  border-color: rgba(166, 36, 85, 0.4);
+  box-shadow: 0 0 25px rgba(166, 36, 85, 0.2);
+}
+
+.number {
+  position: absolute;
+  bottom: -8px;
+  right: -4px;
+  width: 26px;
+  height: 26px;
+  background: linear-gradient(135deg, #a62455, #7b275c);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
   font-weight: 800;
-  color: var(--brand-main);
+  color: #fff;
+  border: 2px solid #ffffff;
+  box-shadow: 0 4px 12px rgba(166, 36, 85, 0.3);
+  z-index: 4;
 }
 
-/* Local connector segment (covers central line under the icon) */
-.connector {
+/* Tooltip on hover */
+.tooltip {
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-12px);
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 0.8rem 1rem;
+  box-shadow: 0 12px 32px rgba(15, 23, 42, 0.15);
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  z-index: 10;
+  border: 1px solid rgba(166, 36, 85, 0.1);
+}
+
+.node:hover .tooltip {
+  opacity: 1;
+  transform: translateX(-50%) translateY(-16px);
+  pointer-events: auto;
+}
+
+.tooltipTitle {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #1f2937;
+  margin: 0 0 0.25rem;
+}
+
+.tooltipText {
+  font-size: 0.75rem;
+  color: #64748b;
+  margin: 0;
+  line-height: 1.4;
+}
+
+/* Trophy finish */
+.finish {
   flex: 1;
-  height: 2px;
-  margin-left: 0.5rem;
-  background: transparent; /* main line is handled by ::before on .timeline */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-/* Text block */
-.stepBody {
-  text-align: left;
+.trophyNode {
+  position: relative;
+  width: 80px;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 0;
 }
 
-.stepTitle {
-  font-size: clamp(0.85rem, 1.6vw, 0.9rem);
-  font-weight: 800;
+
+.trophyEmoji {
+  font-size: 2.8rem;
+  position: relative;
+  z-index: 3;
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-10px) rotate(5deg);
+  }
+}
+
+.trophyGlow {
+  position: absolute;
+  inset: -12px;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(251, 146, 60, 0.25) 0%,
+    rgba(251, 146, 60, 0.08) 50%,
+    transparent 70%
+  );
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.7;
+  }
+  50% {
+    transform: scale(1.2);
+    opacity: 1;
+  }
+}
+
+.finishLabel {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.finishLabel span {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: #f97316;
   text-transform: uppercase;
-  letter-spacing: 0.08em;
-  color: var(--brand-blue);
-  margin-bottom: 0.35rem;
+  letter-spacing: 0.05em;
 }
 
-.stepDesc {
-  font-size: clamp(0.8rem, 1.5vw, 0.9rem);
+.finishLabel small {
+  font-size: 0.75rem;
+  color: #94a3b8;
+}
+
+/* Right side - Illustration */
+.illustrationSection {
+  display: none;
+}
+
+.characterCard {
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 2rem;
+  box-shadow: 0 12px 32px rgba(15, 23, 42, 0.1);
+  text-align: center;
+  border: 1px solid rgba(166, 36, 85, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.characterCard:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 48px rgba(166, 36, 85, 0.15);
+}
+
+.character {
+  width: 100%;
+  max-width: 200px;
+  height: auto;
+  margin-bottom: 1.5rem;
+  filter: drop-shadow(0 8px 16px rgba(166, 36, 85, 0.15));
+}
+
+.characterInfo h3 {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #a62455;
+  margin: 0 0 0.5rem;
+}
+
+.characterInfo p {
+  font-size: 0.9rem;
+  color: #64748b;
+  margin: 0;
   line-height: 1.6;
-  color: #4b5563;
 }
 
-/* Remove line on last card edge (visually) using gradient fade */
-/* Fade out line at the end – desktop/tablet (horizontal) */
-.stepCard:last-child::after {
-  content: "";
-  position: absolute;
-  top: 40px;
-  right: -12px;
-  width: 32px;
-  height: 2px;
-  background: linear-gradient(
-    90deg,
-    rgba(166, 36, 85, 0.35),
-    rgba(166, 36, 85, 0)
-  );
-}
+/* ========================================
+   RESPONSIVE - TABLET
+   ======================================== */
+@media (max-width: 1100px) {
+  .steps {
+    gap: 0.25rem;
+  }
 
-/* Optional: fade-in at the beginning (first card) */
-.stepCard:first-child::before {
-  content: "";
-  position: absolute;
-  top: 40px;
-  left: -12px;
-  width: 32px;
-  height: 2px;
-  background: linear-gradient(
-    90deg,
-    rgba(166, 36, 85, 0),
-    rgba(166, 36, 85, 0.35)
-  );
-}
+  .node {
+    width: 60px;
+    height: 60px;
+  }
 
-/* ---------- RESPONSIVE BREAKPOINTS ---------- */
+  .icon {
+    font-size: 1.5rem;
+  }
 
-/* 3 columns on medium screens */
-@media (max-width: 1120px) {
-  .timeline {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    row-gap: 2.2rem;
+  .trophyNode {
+    width: 70px;
+    height: 70px;
+  }
+
+  .trophyEmoji {
+    font-size: 2.2rem;
   }
 }
 
-/* 2 columns on small tablets */
-@media (max-width: 800px) {
-  .timeline {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    row-gap: 2rem;
-  }
-}
-
-/* Mobile – vertical timeline */
-@media (max-width: 640px) {
+/* ========================================
+   RESPONSIVE - MOBILE
+   ======================================== */
+@media (max-width: 768px) {
   .section {
-    margin: 2.25rem 1rem;
+    padding: clamp(2rem, 4vw, 2.5rem) clamp(1rem, 3vw, 1.5rem);
   }
 
-  .bottom {
-    padding: 2rem 1.25rem 2.4rem;
+  .heading {
+    font-size: 1.5rem;
   }
 
-  .timeline {
-    grid-template-columns: minmax(0, 1fr);
-    gap: 1.8rem;
+  .track {
+    display: none;
   }
 
-  .stepCard {
+  .steps {
     flex-direction: row;
-    align-items: flex-start;
-    padding: 1rem 1rem 1.1rem;
+    gap: 0.5rem;
+    overflow-x: auto;
+    padding: 1rem 0;
+    -webkit-overflow-scrolling: touch;
   }
 
-  .stepHeader {
-    flex-direction: column;
-    align-items: center;
-    margin-right: 0.75rem;
+  .step {
+    flex: 0 0 auto;
   }
 
-  /* Vertical central line on mobile */
-  .timeline::before {
-    top: 0;
-    bottom: 0;
-    left: 40px;
-    right: auto;
-    width: 2px;
-    height: auto;
-    margin-inline: 0;
-    background: linear-gradient(
-      180deg,
-      rgba(166, 36, 85, 0.12),
-      rgba(31, 61, 122, 0.35),
-      rgba(166, 36, 85, 0.12)
-    );
+  .node {
+    width: 55px;
+    height: 55px;
   }
 
-  .iconCircle {
-    margin-bottom: 0.5rem;
+  .icon {
+    font-size: 1.3rem;
   }
 
-  .stepBody {
-    text-align: left;
+  .number {
+    width: 22px;
+    height: 22px;
+    font-size: 0.65rem;
   }
 
-  /* Vertical fade out on last step for mobile */
-  .stepCard:last-child::after {
-    top: auto;
-    bottom: -16px;
-    right: auto;
-    left: 40px;
-    width: 2px;
-    height: 32px;
-    background: linear-gradient(
-      180deg,
-      rgba(166, 36, 85, 0.35),
-      rgba(166, 36, 85, 0)
-    );
+  .tooltip {
+    white-space: normal;
+    min-width: 120px;
+    max-width: 150px;
   }
 
-  /* Optional: vertical fade-in at top on first step */
-  .stepCard:first-child::before {
-    top: -16px;
-    bottom: auto;
-    left: 40px;
-    width: 2px;
-    height: 32px;
-    background: linear-gradient(
-      180deg,
-      rgba(166, 36, 85, 0),
-      rgba(166, 36, 85, 0.35)
-    );
+  .trophyNode {
+    width: 65px;
+    height: 65px;
+  }
+
+  .trophyEmoji {
+    font-size: 2rem;
+  }
+}
+
+/* ========================================
+   SMALL MOBILE
+   ======================================== */
+@media (max-width: 480px) {
+  .section {
+    padding: 1.5rem 1rem;
+  }
+
+  .heading {
+    font-size: 1.3rem;
+  }
+
+  .node {
+    width: 50px;
+    height: 50px;
+  }
+
+  .icon {
+    font-size: 1.2rem;
+  }
+
+  .trophyNode {
+    width: 60px;
+    height: 60px;
+  }
+
+  .trophyEmoji {
+    font-size: 1.8rem;
+  }
+}
+
+/* ========================================
+   SMALL MOBILE
+   ======================================== */
+@media (max-width: 400px) {
+  .heading {
+    font-size: 1.75rem;
+  }
+
+  .node {
+    width: 50px;
+    height: 50px;
+  }
+
+  .icon {
+    font-size: 1.2rem;
+  }
+
+  .number {
+    width: 20px;
+    height: 20px;
+    font-size: 0.6rem;
+  }
+
+  .card {
+    padding: 0.85rem 1rem;
+  }
+
+  .cardTitle {
+    font-size: 0.9rem;
+  }
+
+  .cardText {
+    font-size: 0.8rem;
   }
 }

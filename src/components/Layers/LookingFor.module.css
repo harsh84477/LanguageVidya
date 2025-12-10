@@ -22,7 +22,7 @@
   margin-bottom: 20px;
 
   /* Glassmorphism background (semi‑transparent so mandala shows & blurs) */
-  background: rgba(255, 255, 255, 0.18);
+    background: #ffe4e4b6;
   backdrop-filter: blur(28px);
   -webkit-backdrop-filter: blur(28px);
 

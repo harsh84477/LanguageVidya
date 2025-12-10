@@ -4,62 +4,102 @@ import styles from "./TimelineSection.module.css";
 
 const steps = [
   {
-    title: "Define your purpose",
-    text: "Identify your goal: career, communication, confidence.",
+    number: 1,
+    title: "Set Your Goal",
+    text: "Career, travel, or confidence—pick your why.",
+    icon: "/icons/goal-2-svgrepo-com.svg",
   },
   {
-    title: "Build Your Foundation",
-    text: " Strengthen grammar, vocabulary & pronunciation..",
+    number: 2,
+    title: "Learn the Basics",
+    text: "Grammar, vocabulary, and pronunciation foundations.",
+    icon: "/icons/books-svgrepo-com.svg",
   },
   {
-    title: "Practise Every Day",
-    text: "Live classes + daily speaking tasks build fluency.",
+    number: 3,
+    title: "Practice Daily",
+    text: "Daily speaking exercises build habit.",
+    icon: "/icons/speaking-head-svgrepo-com.svg",
   },
   {
-    title: "Handle Real Situations",
-    text: "Meetings, calls, interviews & everyday conversations.",
+    number: 4,
+    title: "Go Real-World",
+    text: "Nail meetings, calls, and interviews.",
+    icon: "/icons/job-profile-svgrepo-com (1).svg",
   },
   {
-    title: "Speak on Big Topics",
-    text: "hare opinions, ideas, plans & stories confidently.",
+    number: 5,
+    title: "Express Yourself",
+    text: "Share ideas, opinions, and stories clearly.",
+    icon: "/icons/idea-svgrepo-com.svg",
   },
   {
-    title: "Become Skill-Strong",
-    text: " Reading, writing, listening & speaking work together.",
+    number: 6,
+    title: "Connect Skills",
+    text: "Read, write, listen, speak—all in sync.",
+    icon: "/icons/link-svgrepo-com.svg",
+  },
+  {
+    number: 7,
+    title: "Speak Fluently",
+    text: "Confident communication anywhere.",
+    icon: "/icons/boost-for-reddit-svgrepo-com.svg",
   },
 ];
 
 export default function TimelineSection() {
   return (
     <section className={styles.section}>
-  <div className={styles.topBand}>
-    <div className={styles.topInner}>
-      <h2 className={styles.heading}>Your Language Vidya Journey</h2>
-      <p className={styles.topText}>
-        A simple path from “I’m not confident” to “I can express myself clearly.”
-      </p>
-    </div>
-  </div>
+      <div className={styles.header}>
+        <span className={styles.badge}>Your Journey</span>
+        <h2 className={styles.heading}>
+          From Zero to <span className={styles.highlight}>Fluent</span>
+        </h2>
+        <p className={styles.subheading}>
+          7 milestones that transform how you communicate
+        </p>
+      </div>
 
-  <div className={styles.bottom}>
-    <div className={styles.timeline}>
-      {steps.map((step, index) => (
-        <div key={step.title} className={styles.stepCard}>
-          <div className={styles.stepHeader}>
-            <div className={styles.iconCircle}>
-              <span className={styles.iconNumber}>{index + 1}</span>
-            </div>
-            <div className={styles.connector} />
+      <div className={styles.timelineSection}>
+        <div className={styles.timeline}>
+          {/* Progress track */}
+          <div className={styles.track}>
+            <div className={styles.trackFill} />
           </div>
 
-          <div className={styles.stepBody}>
-            <h3 className={styles.stepTitle}>{step.title}</h3>
-            <p className={styles.stepDesc}>{step.text}</p>
+          {/* Steps - Icons only */}
+          <div className={styles.steps}>
+              {steps.map((step) => (
+                <div key={step.number} className={styles.step}>
+                  <div className={styles.node}>
+                    <img
+                      src={step.icon}
+                      alt={step.title}
+                      className={styles.icon}
+                    />
+                    <div className={styles.ring} />
+                    <span className={styles.number}>{step.number}</span>
+                    
+                    {/* Hover tooltip */}
+                    <div className={styles.tooltip}>
+                      <h4 className={styles.tooltipTitle}>{step.title}</h4>
+                      <p className={styles.tooltipText}>{step.text}</p>
+                    </div>
+                  </div>
+                </div>
+              ))}            <div className={styles.finish}>
+              <div className={styles.trophyNode}>
+                <img
+                  src="/icons/trophy-svgrepo-com.svg"
+                  alt="Trophy"
+                  className={styles.trophyIcon}
+                />
+                <div className={styles.trophyGlow} />
+              </div>
+            </div>
           </div>
         </div>
-      ))}
-    </div>
-  </div>
-</section>
+      </div>
+    </section>
   );
-}   
+}
