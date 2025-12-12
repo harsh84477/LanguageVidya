@@ -1,29 +1,50 @@
-"use client";
+'use client'
 
-import { useEffect, useState } from "react";
-import styles from "./AnnouncementBar.module.css";
+import { useEffect, useState } from 'react'
+import styles from './AnnouncementBar.module.css'
 
-export default function AnnouncementBar({ messages } = {}) {
-  const defaultMessages = [
-    "tearm with Comfort speak with comfidence",
-    "Learn at your own pace — new posts weekly",
-    "Join our community — subscribe for updates",
-  ];
-  const msgs = messages && messages.length ? messages : defaultMessages;
-  const [index, setIndex] = useState(0);
-  const [visible, setVisible] = useState(true);
+const DEFAULT_MESSAGES = [
+ 'Confidence Begins with Communication.',
+'Learn English. Lead with Impact.',
+'Turn Your Words into Power.',
+'Communication That Transforms Lives.',
+'Your Journey to Fearless Speaking Starts Here.',
+'Learn With Comfort, Speak with Confidence',
+'Impress Your Boss with Confident English.',
+'Upgrade Your CV with Powerful Communication Skills.',
+'Speak Smart. Get Promoted Faster.',
+'Turn Your English into Your Biggest Career Asset.',
+'From Nervous Speaker to Office Star.',
+'Let Your Words Open New Career Doors.',
+'Communicate Better. Earn Better.',
+'Your English Can Decide Your Next Promotion.',
+'Build Confidence That Gets You Noticed.'
+]
+
+export default function AnnouncementBar({ messages }) {
+  const msgs = Array.isArray(messages) && messages.length > 0
+    ? messages
+    : DEFAULT_MESSAGES
+
+  const [index, setIndex] = useState(0)
+  const [visible, setVisible] = useState(true)
 
   useEffect(() => {
+    if (msgs.length <= 1) return
+
     const interval = setInterval(() => {
-      // simple fade out -> change -> fade in
-      setVisible(false);
+      // fade out
+      setVisible(false)
+
+      // change text, then fade in
       setTimeout(() => {
-        setIndex((i) => (i + 1) % msgs.length);
-        setVisible(true);
-      }, 300);
-    }, 5000);
-    return () => clearInterval(interval);
-  }, [msgs.length]);
+        setIndex((prev) => (prev + 1) % msgs.length)
+        setVisible(true)
+      }, 300)
+    }, 5000)
+
+    return () => clearInterval(interval)
+  }, [msgs.length])
 
   return (
     <div className={styles.barWrapper}>
@@ -38,6 +59,5 @@ export default function AnnouncementBar({ messages } = {}) {
         </div>
       </div>
     </div>
-  );
+  )
 }
-

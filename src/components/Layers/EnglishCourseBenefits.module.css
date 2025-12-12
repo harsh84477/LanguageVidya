@@ -8,12 +8,37 @@
   --bg-hero: #ffe0ef;
 }
 
-.section {
-  padding: 4rem 1.5rem;
-  background: linear-gradient(135deg, #ffe0ef, #ffd4b0);
+.section { margin-top: 20px;
+  margin-bottom: 20px;
+
+  /* Glassmorphism background (semi‑transparent so mandala shows & blurs) */
+  background: rgba(255, 255, 255, 0.18);
+  backdrop-filter: blur(28px);
+  -webkit-backdrop-filter: blur(28px);
+
+  /* Glass border + inner shine */
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.32);
+  box-shadow:
+    0 14px 40px rgba(0, 0, 0, 0.16),
+    inset 0 1px 0 rgba(255, 255, 255, 0.45);
+
+  position: relative;
+  overflow: hidden;
+  padding: clamp(2.5rem, 6vw, 4.5rem) clamp(1rem, 4vw, 3rem);
+}
+.section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at top left,
+    rgba(255, 255, 255, 0.45),
+    transparent 100%);
+  pointer-events: none;
 }
 
 .grid {
+   z-index: 1;
   max-width: 1120px;
   margin: 0 auto;
   display: grid;
@@ -23,6 +48,7 @@
 
 /* text cards */
 .card {
+  z-index: 1;
   background-color: #ffffff;
   border-radius: 1rem;
   padding: 1.75rem 1.75rem 1.5rem;
@@ -101,6 +127,27 @@
   box-shadow: 0 22px 45px rgba(31, 61, 122, 0.25);
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
+/* mandala image layer */
+.heroMandala {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;       /* Align container to the right */
+  width: 100%;     /* Adjust width as needed */
+  z-index: 0;
+  opacity: 0.35;   /* Use decimal for opacity */
+  pointer-events: none;
+}
+
+.heroMandala img {
+  filter: blur(0px);  /* Add 'px' unit */
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: left; /* Align image content to right */
+  
+}
+
 
 /* responsive */
 @media (max-width: 900px) {
@@ -127,4 +174,41 @@
   .block2 { order: 1; }
   .block3 { order: 3; }
   .block4 { order: 4; }
+}   
+
+
+/* point text: hidden by default */
+/* point text: hidden by default, smooth + soft easing */
+/* point text: hidden by default, in a soft box */
+.pointText {
+  font-size: 0.875rem;
+  color: #4b5563;
+  line-height: 1.5;
+  max-height: 0;
+  opacity: 0;
+  margin-top: 0;
+  padding: 0 0.75rem;                 /* horizontal padding in box */
+  border-radius: 0.5rem;
+  border: 1px solid transparent;      /* hidden border initially */
+  background-color: rgba(249, 228, 192, 0.15); /* very light */
+  overflow: hidden;
+  transition:
+    max-height 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+    opacity 0.35s ease,
+    margin-top 0.35s ease,
+    padding-top 0.25s ease,
+    padding-bottom 0.25s ease,
+    border-color 0.25s ease,
+    background-color 0.25s ease;
 }
+
+/* when that row/title is
+
+
+/* when list row (title area) hovered */
+.list li:hover .pointText {
+  max-height: 260px;              /* enough for 2–3 lines */
+  opacity: 1;
+  margin-top: 0.25rem;            /* gentle gap under title */
+}
+

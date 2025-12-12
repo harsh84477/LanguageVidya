@@ -38,7 +38,7 @@ export default function RootLayout({ children }) {
       <head>
         <script src="https://cdn.tailwindcss.com"></script>
       </head>
-      <body className={`${geistSans.variable} ${geistMono.variable} app-shell`}>
+      <body className={`${geistSans.variable} ${geistMono.variable} app-shell`} style={{overflowX:"hidden"}}>
         <a href="#main-content" className="skip-link">
           Skip to main content
         </a>

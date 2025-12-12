@@ -1,42 +1,50 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Image from "next/image";
 import styles from "./WhoCanLearn.module.css";
+
+const courses = [
+  "Basic English Course",
+  "Advanced English Course",
+  "Business English Course",
+  "Spoken English for Students",
+];
 
 const learners = [
   {
     title: "Working professionals",
-    icon: "/uploads/professional.png",
+    icon: "/uploads/icons/professional.png",
     description:
       "Improve your workplace English, emails, and presentations to grow in your career.",
   },
   {
     title: "Students",
-    icon: "/uploads/graduated.png",
+    icon: "/uploads/icons/graduated.png",
     description:
       "Build strong speaking and writing skills for school, college, and exams.",
   },
   {
     title: "Homemakers",
-    icon: "/uploads/home.png",
+    icon: "/uploads/icons/home.png",
     description:
       "Speak confidently in daily situations like markets, travel, and parent–teacher meetings.",
   },
   {
     title: "Business owners",
-    icon: "/uploads/owner.png",
+    icon: "/uploads/icons/owner.png",
     description:
       "Communicate clearly with clients, teams, and partners across cities and countries.",
   },
   {
     title: "Job seekers",
-    icon: "/uploads/cv.png",
+    icon: "/uploads/icons/cv.png",
     description:
       "Prepare for interviews, group discussions, and professional conversations.",
   },
   {
     title: "Freelancers",
-    icon: "/uploads/self-employed.png",
+    icon: "/uploads/icons/self-employed.png",
     description:
       "Work smoothly with global clients by improving spoken and written English.",
   },
@@ -45,12 +53,11 @@ const learners = [
 export default function WhoCanLearn() {
   const [index, setIndex] = useState(0);
 
-  // auto-change every 9 seconds
   useEffect(() => {
-    const id = setInterval(() => {
-      setIndex((prev) => (prev + 1) % learners.length);
-    }, 9000);
-
+    const id = setInterval(
+      () => setIndex((prev) => (prev + 1) % learners.length),
+      9000
+    );
     return () => clearInterval(id);
   }, []);
 
@@ -62,15 +69,26 @@ export default function WhoCanLearn() {
 
   return (
     <section className={styles.section}>
+      {/* mandala background layer */}
       <div className={styles.inner}>
+        {/* LEFT: You can learn */}
         <div className={styles.leftText}>
-          <p className={styles.label}>You can learn</p>
-          <h2 className={styles.bigWord}>English</h2>
-          <h2 className={styles.bigWord}>English</h2>
-          <h2 className={styles.bigWord}>English</h2>
-          <h2 className={styles.bigWord}>English</h2>
+          <h2 className={styles.leftHeading}>You can learn</h2>
+
+          <p className={styles.leftSub}>
+            Choose the English course that matches your goals and current level.
+          </p>
+
+          <div className={styles.courseGrid}>
+            {courses.map((course) => (
+              <article key={course} className={styles.courseCard}>
+                <h3 className={styles.courseTitle}>{course}</h3>
+              </article>
+            ))}
+          </div>
         </div>
 
+        {/* RIGHT: Who can learn */}
         <div className={styles.rightBlock}>
           <h2 className={styles.heading}>Who can learn?</h2>
 

@@ -10,10 +10,43 @@
 
 /* SECTION */
 
-.section {
-  padding: 4rem 1.5rem;
-  background: linear-gradient(135deg, #ffe0ef, #ffd4b0),
+.section { margin-top: 20px;
+  margin-bottom: 20px;
 
+  /* Glassmorphism background (semi‑transparent so mandala shows & blurs) */
+    background: #ffe4e4b6;
+  backdrop-filter: blur(28px);
+  -webkit-backdrop-filter: blur(28px);
+
+  /* Glass border + inner shine */
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.32);
+  box-shadow:
+    0 14px 40px rgba(0, 0, 0, 0.16),
+    inset 0 1px 0 rgba(255, 255, 255, 0.45);
+
+  position: relative;
+  overflow: hidden;
+  padding: clamp(2.5rem, 6vw, 4.5rem) clamp(1rem, 4vw, 3rem);
+}
+.section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+    background: #ffe4e4b6;
+  pointer-events: none;
+}
+
+/* mandala background layer */
+.sectionMandala {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 55%;
+  width: 70%;
+  z-index: 0;
+  opacity: 0.22;
+  pointer-events: none;
 }
 
 .inner {
@@ -23,29 +56,67 @@
   grid-template-columns: minmax(0, 1.1fr) minmax(0, 2fr);
   align-items: center;
   gap: 3rem;
+  position: relative;   /* above mandala */
+  z-index: 1;
 }
 
-/* LEFT TEXT */
+/* LEFT: "You can learn" */
 
 .leftText {
+  background: #ffffff;
+  border-radius: 18px;
+  padding: 2rem;
+  box-shadow: 0 18px 40px rgba(15, 23, 42, 0.12);
+  border: 1px solid rgba(166, 36, 85, 0.12);
   color: var(--text-main);
 }
 
-.label {
-  font-size: 2.5rem;
-  font-weight: 500;
-  margin-bottom: 1.5rem;
-  color: var(--brand-blue);
+.leftHeading {
+  font-size: 1.8rem;
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+  color: #111827;
 }
 
-.bigWord {
-  font-size: 2.4rem;
-  line-height: 1.1;
-  font-weight: 700;
+.leftSub {
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: #4b5563;
+  margin-bottom: 1.25rem;
+}
+
+/* course cards on left */
+
+.courseGrid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 0.75rem;
+}
+
+.courseCard {
+  background: var(--accent-page);
+  border-radius: 14px;
+  padding: 0.9rem 1rem;
+  border: 1px solid rgba(31, 61, 122, 0.14);
+  transition: transform 0.2s ease, box-shadow 0.2s ease,
+    border-color 0.2s ease, background-color 0.2s ease;
+  cursor: pointer;
+}
+
+.courseTitle {
+  font-size: 0.9rem;
+  font-weight: 600;
   color: var(--brand-main);
 }
 
-/* RIGHT BLOCK */
+.courseCard:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 30px rgba(31, 61, 122, 0.25);
+  border-color: var(--brand-main);
+  background-color: #fff7eb;
+}
+
+/* RIGHT: "Who can learn?" */
 
 .rightBlock {
   background: #ffffff;
@@ -79,7 +150,7 @@
   gap: 0.75rem;
 }
 
-/* CARD */
+/* AUDIENCE CARDS */
 
 .card {
   background: var(--accent-page);
@@ -87,7 +158,7 @@
   padding: 1rem 1.1rem;
   border: 1px solid rgba(31, 61, 122, 0.14);
   transition: transform 0.2s ease, box-shadow 0.2s ease,
-              border-color 0.2s ease, background-color 0.2s ease;
+    border-color 0.2s ease, background-color 0.2s ease;
   cursor: pointer;
 }
 
@@ -118,7 +189,7 @@
   display: block;
 }
 
-/* HOVER */
+/* HOVER STATES */
 
 .card:hover {
   transform: translateY(-6px);
@@ -156,7 +227,7 @@
   color: var(--brand-blue);
   cursor: pointer;
   transition: background-color 0.2s ease, transform 0.2s ease,
-              box-shadow 0.2s ease, color 0.2s ease;
+    box-shadow 0.2s ease, color 0.2s ease;
 }
 
 .navButton:hover {
@@ -185,7 +256,13 @@
     padding: 3rem 1rem;
   }
 
-  .bigWord {
-    font-size: 2rem;
+  .courseGrid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .sectionMandala {
+    left: 30%;
+    width: 90%;
+    opacity: 0.18;
   }
 }
