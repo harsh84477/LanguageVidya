@@ -1,9 +1,9 @@
 'use client'
 
 import Link from 'next/link'
+import Image from 'next/image'
 import { useState } from 'react'
 import styles from './Header.module.css'
-import AnnouncementBar from './AnnouncementBar'
 
 const NAV_ITEMS = [
   {
@@ -32,17 +32,27 @@ const NAV_ITEMS = [
       { id: 'sessions-1-1', label: '1-1 Session', href: '/sessions/contact' },
       { id: 'sessions-seminars', label: 'Intitutional Seminars', href: '/sessions/contact' }
     ]
+  },
+  {
+    title: 'Entrance Exams',
+    items: [
+      { id: 'exam-ielts', label: 'IELTS', href: '/exams/ielts' },
+      { id: 'exam-toefl', label: 'TOEFL', href: '/exams/toefl' },
+      { id: 'exam-gre', label: 'GRE', href: '/exams/gre' },
+      { id: 'exam-pte', label: 'PTE', href: '/exams/pte' }
+    ]
   }
 ]
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
-  const [expandedGroup, setExpandedGroup] = useState(null)
+  const [openMobileGroup, setOpenMobileGroup] = useState(null)
 
   const toggleMenu = () => setIsMenuOpen(prev => !prev)
   const closeMenu = () => setIsMenuOpen(false)
-  const toggleGroup = (groupTitle) => {
-    setExpandedGroup(expandedGroup === groupTitle ? null : groupTitle)
+
+  const toggleMobileGroup = (groupTitle) => {
+    setOpenMobileGroup((prev) => (prev === groupTitle ? null : groupTitle))
   }
 
   return (
@@ -54,10 +64,13 @@ export default function Header() {
           {/* Logo */}
           <div className={styles.logoWrap}>
             <Link href="/" className={styles.logoLink} onClick={closeMenu}>
-              <img
+              <Image
                 src="/uploads/lang-vidya-slant.png"
                 alt="Language Vidya"
                 className={styles.logoImage}
+                width={156}
+                height={52}
+                priority
               />
             </Link>
           </div>
@@ -136,22 +149,55 @@ export default function Header() {
             <ul className={styles.mobileList}>
               {NAV_ITEMS.map((group) => (
                 <li key={group.title} className={styles.mobileGroup}>
-                  <p className={styles.mobileGroupTitle}>{group.title}</p>
-                  {group.items.map((item) => (
-                    <Link
-                      key={item.id}
-                      href={item.href}
-                      className={styles.mobileLink}
-                      onClick={closeMenu}
+                  <button
+                    type="button"
+                    className={styles.mobileGroupTitleButton}
+                    onClick={() => toggleMobileGroup(group.title)}
+                    aria-expanded={openMobileGroup === group.title}
+                  >
+                    <span>{group.title}</span>
+                    <svg
+                      className={`${styles.mobileChevron} ${openMobileGroup === group.title ? styles.mobileChevronOpen : ''}`}
+                      viewBox="0 0 20 20"
+                      aria-hidden="true"
                     >
-                      {item.label}
-                    </Link>
-                  ))}
+                      <path
+                        fillRule="evenodd"
+                        d="M5.23 7.21a.75.75 0 0 1 1.06.02L10 10.94l3.71-3.71a.75.75 0 1 1 1.06 1.06l-4.24 4.24a.75.75 0 0 1-1.06 0L5.21 8.29a.75.75 0 0 1 .02-1.08z"
+                        clipRule="evenodd"
+                      />
+                    </svg>
+                  </button>
+
+                  <div
+                    className={`${styles.mobileGroupItems} ${
+                      openMobileGroup === group.title ? styles.mobileGroupItemsOpen : ''
+                    }`}
+                  >
+                    {group.items.map((item) => (
+                      <Link
+                        key={item.id}
+                        href={item.href}
+                        className={styles.mobileLink}
+                        onClick={closeMenu}
+                      >
+                        {item.label}
+                      </Link>
+                    ))}
+                  </div>
                 </li>
               ))}
             </ul>
           </nav>
         </div>
+
+        <div
+          className={`${styles.mobileBackdrop} ${
+            isMenuOpen ? styles.mobileBackdropOpen : ''
+          }`}
+          onClick={closeMenu}
+          aria-hidden="true"
+        />
       </div>
     </header>
   )

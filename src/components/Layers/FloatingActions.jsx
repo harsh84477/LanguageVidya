@@ -4,51 +4,52 @@ import styles from "./FloatingActions.module.css";
 
 import { FaWhatsapp, FaInstagram, FaRobot, FaPhoneAlt } from "react-icons/fa";
 
+const ACTIONS = [
+  {
+    href: "/ai-practice",
+    label: "AI Practice",
+    icon: FaRobot,
+    variant: "fab-ai",
+  },
+  {
+    href: "https://wa.me/911234567890",
+    label: "Chat on WhatsApp",
+    icon: FaWhatsapp,
+    variant: "fab-whatsapp",
+    external: true,
+  },
+  {
+    href: "https://instagram.com/yourusername",
+    label: "Open Instagram",
+    icon: FaInstagram,
+    variant: "fab-instagram",
+    external: true,
+  },
+  {
+    href: "tel:+919112223334",
+    label: "Call us",
+    icon: FaPhoneAlt,
+    variant: "fab-phone",
+  },
+];
+
 const FloatingActions = () => {
   return (
-    <div className={styles["fab-container"]}>
-       {/* AI Practice */}
-      <a
-        href="/ai-practice" // change to your route/section
-        className={`${styles.fab} ${styles["fab-ai"]}`}
-        aria-label="AI Practice"
-      >
-        <FaRobot />
-      </a>
-      
-      {/* WhatsApp */}
-      <a
-        href="https://wa.me/911234567890"
-        target="_blank"
-        rel="noopener noreferrer"
-        className={`${styles.fab} ${styles["fab-whatsapp"]}`}
-        aria-label="Chat on WhatsApp"
-      >
-        <FaWhatsapp />
-      </a>
-
-      {/* Instagram */}
-      <a
-        href="https://instagram.com/yourusername"
-        target="_blank"
-        rel="noopener noreferrer"
-        className={`${styles.fab} ${styles["fab-instagram"]}`}
-        aria-label="Open Instagram"
-      >
-        <FaInstagram />
-      </a>
-
- 
-      
-      {/* Phone call */}
-      <a
-        href="tel:+919112223334" // put your real phone number here
-        className={`${styles.fab} ${styles["fab-phone"]}`}
-        aria-label="Call us"
-      >
-        <FaPhoneAlt />
-      </a>
-
+    <div className={styles["fab-container"]} >
+      {ACTIONS.map(({ href, label, icon: Icon, variant, external }) => (
+        <a
+          key={label}
+          href={href}
+          className={`${styles.fab} ${styles[variant]}`}
+          aria-label={label}
+          title={label}
+          {...(external
+            ? { target: "_blank", rel: "noopener noreferrer" }
+            : null)}
+        >
+          <Icon />
+        </a>
+      ))}
     </div>
   );
 };

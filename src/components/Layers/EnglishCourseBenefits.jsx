@@ -6,6 +6,7 @@ import Image from "next/image";
 export default function EnglishCourseBenefits() {
   return (
     <section className={styles.section}>
+    
       <div className={styles.grid}>
         {/* Why choose section */}
         <article className={`${styles.card} ${styles.block1}`} >

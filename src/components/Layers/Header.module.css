@@ -27,14 +27,14 @@
 .container {
   max-width: 1280px;
   margin: 0 auto;
-  padding: 0.85rem 1.25rem;
+  padding: 0.7rem 1.15rem;
 }
 
 .grid {
   display: flex;
   align-items: center;
   width: 100%;
-  gap: 1.5rem;
+  gap: 1.25rem;
 }
 
 /* LOGO */
@@ -90,7 +90,7 @@
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  gap: 1.75rem;
+  gap: 1.35rem;
   list-style: none;
   margin: 0;
   padding: 0;
@@ -108,7 +108,7 @@
   border: none;
   background: none;
   font: inherit;
-  font-size: 0.95rem;
+  font-size: 0.9rem;
   color: var(--text-main);
   cursor: pointer;
   transition: color var(--transition-fast);
@@ -184,18 +184,18 @@
 .actions {
   display: flex;
   align-items: center;
-  gap: 1rem;
+  gap: 0.9rem;
 }
 
 .loginLink {
-  padding: 0.4rem 0.9rem;
+  padding: 0.35rem 0.8rem;
   border-radius: var(--radius-pill);
   background-color: #ffffff;
   border: 1px solid rgba(148, 163, 184, 0.6);
   color: var(--brand-purple);
   text-decoration: none;
   font-weight: 600;
-  font-size: 0.9rem;
+  font-size: 0.88rem;
   transition: background-color var(--transition-fast),
     color var(--transition-fast),
     box-shadow var(--transition-fast),
@@ -224,7 +224,7 @@
 }
 
 .hamburgerBar {
-  width: 24px;
+  width: 22px;
   height: 2px;
   border-radius: var(--radius-pill);
   background-color: var(--text-main);
@@ -235,8 +235,7 @@
 .mobileMenu {
   position: fixed;
   inset-inline: 0;
-  top: 107px;
-  /* approximate header height */
+  top: 78px;
   background: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
   border-top: 2px solid var(--accent-orange);
   box-shadow: 0 20px 40px rgba(15, 23, 42, 0.12),
@@ -248,7 +247,7 @@
   transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1), 
               transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   z-index: 40;
-  max-height: calc(100vh - 107px);
+  max-height: calc(100vh - 86px);
   overflow-y: auto;
 }
 
@@ -259,46 +258,101 @@
   transform: translateY(0);
 }
 
+.mobileBackdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.35);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease;
+  z-index: 30;
+}
+
+.mobileBackdropOpen {
+  opacity: 1;
+  pointer-events: auto;
+}
+
 .mobileList {
   list-style: none;
   margin: 0;
-  padding: 1rem;
+  padding: 0.75rem;
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  gap: 0.35rem;
 }
 
 .mobileGroup {
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
-  margin-bottom: 0.5rem;
-  padding: 1rem;
+  gap: 0.35rem;
+  margin-bottom: 0.35rem;
+  padding: 0.75rem;
   background: #ffffff;
-  border-radius: 16px;
+  border-radius: 14px;
   border: 1px solid #e2e8f0;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
 }
 
-.mobileGroupTitle {
+.mobileGroupTitleButton {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  width: 100%;
+  padding: 0.6rem 0.75rem;
+  border-radius: 10px;
+  border: 1px solid rgba(166, 36, 85, 0.14);
+  background: linear-gradient(135deg, rgba(166, 36, 85, 0.08), rgba(123, 39, 92, 0.08));
+  color: #0f172a;
   font-weight: 700;
-  font-size: 1rem;
-  letter-spacing: 0.3px;
-  color: #ffffff;
-  padding: 0.75rem 1rem;
-  border-radius: 12px;
-  background: linear-gradient(135deg, var(--brand-main), var(--brand-purple));
-  margin: -1rem -1rem 0.5rem -1rem;
-  text-transform: uppercase;
+  font-size: 0.9rem;
+  letter-spacing: 0.25px;
+  text-align: left;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.mobileGroupTitleButton:hover {
+  border-color: var(--brand-main);
+  background: linear-gradient(135deg, rgba(166, 36, 85, 0.12), rgba(123, 39, 92, 0.12));
+  transform: translateY(-1px);
+}
+
+.mobileChevron {
+  width: 14px;
+  height: 14px;
+  fill: currentColor;
+  transition: transform 0.2s ease;
+}
+
+.mobileChevronOpen {
+  transform: rotate(180deg);
+}
+
+.mobileGroupItems {
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  transition: max-height 0.28s ease, opacity 0.25s ease;
+  display: grid;
+  gap: 0.4rem;
+  padding-inline: 0.1rem;
+}
+
+.mobileGroupItemsOpen {
+  max-height: 480px;
+  opacity: 1;
+  padding-top: 0.35rem;
 }
 
 .mobileLink {
   display: flex;
   align-items: center;
-  padding: 0.75rem 1rem;
-  border-radius: 10px;
+  padding: 0.6rem 0.8rem;
+  border-radius: 9px;
   text-decoration: none;
-  font-size: 0.95rem;
+  font-size: 0.88rem;
   font-weight: 500;
   color: var(--text-main);
   background-color: #f8fafc;
@@ -322,7 +376,7 @@
   background: linear-gradient(135deg, rgba(166, 36, 85, 0.08), rgba(123, 39, 92, 0.08));
   color: var(--brand-main);
   border-color: var(--brand-main);
-  transform: translateX(6px);
+  transform: translateX(4px);
   font-weight: 600;
 }
 
@@ -347,8 +401,8 @@
 
 @media (max-width: 768px) {
   .container {
-    padding-inline: 1rem;
-    padding-block: 0.75rem;
+    padding-inline: 0.9rem;
+    padding-block: 0.65rem;
   }
 
   .grid {
@@ -366,16 +420,26 @@
 
 @media (max-width: 480px) {
   .container {
-    padding-inline: 0.75rem;
+    padding-inline: 0.65rem;
   }
 
   .actions {
-    gap: 0.75rem;
+    gap: 0.65rem;
   }
 
   .loginLink {
-    padding-inline: 0.9rem;
-    font-size: 0.85rem;
+    padding-inline: 0.75rem;
+    font-size: 0.84rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .logoImage {
+    height: 1.8rem;
+  }
+
+  .mobileMenu {
+    top: 72px;
   }
 }
 
@@ -383,7 +447,8 @@
 .navButton:focus-visible,
 .loginLink:focus-visible,
 .hamburger:focus-visible,
-.mobileLink:focus-visible {
+.mobileLink:focus-visible,
+.mobileGroupTitleButton:focus-visible {
   outline: 2px solid var(--accent-orange);
   outline-offset: 2px;
 }

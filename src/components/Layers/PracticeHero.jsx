@@ -29,14 +29,16 @@ export default function PracticeHero() {
 
           <div className={styles.cardBody}>
             <div className={styles.avatarCircle}>
-             <img
+             <Image
       src="/icons/testing.png"
       alt="AI Avatar"
       className={styles.avatarImage}
+      width={96}
+      height={96}
     />
             </div>
             <p className={styles.status}>Ready when you are</p>
-            <button className={styles.ctaButton}>Start Free Test</button>
+            <button type="button" className={styles.ctaButton}>Start Free Test</button>
             <p className={styles.cardNote}>
               5–7 minutes • Instant results • No payment required
             </p>

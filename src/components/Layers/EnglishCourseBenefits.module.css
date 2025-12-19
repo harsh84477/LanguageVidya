@@ -9,13 +9,12 @@
 }
 
 .section {
+  backdrop-filter: blur(2px);
   margin-top: 20px;
   margin-bottom: 20px;
 
-  /* Glassmorphism background (semi‑transparent so mandala shows & blurs) */
-  background: rgba(255, 255, 255, 0.18);
-  backdrop-filter: blur(28px);
-  -webkit-backdrop-filter: blur(28px);
+  background: rgba(200, 157, 157, 0.276);
+
 
   border-radius: 20px;
   border: 1px solid rgba(255, 255, 255, 0.32);
@@ -151,6 +150,7 @@
   
 }
 
+  
 
 /* responsive */
 @media (max-width: 900px) {

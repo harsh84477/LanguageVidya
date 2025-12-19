@@ -16,11 +16,19 @@ export default function PopupForm({ isOpen, onClose }) {
     e.preventDefault();
     console.log("Form submitted:", formData);
     // Handle form submission (API call, etc.)
-    onClose();
+    if (onClose) {
+      onClose();
+    }
   };
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleClose = () => {
+    if (onClose) {
+      onClose();
+    }
   };
 
   useEffect(() => {
@@ -37,11 +45,17 @@ export default function PopupForm({ isOpen, onClose }) {
   if (!isOpen) return null;
 
   return (
-    <div className={styles.overlay} onClick={onClose}>
-      <div className={styles.popup} onClick={(e) => e.stopPropagation()}>
+    <div className={styles.overlay} onClick={handleClose}>
+      <div
+        className={styles.popup}
+        onClick={(e) => e.stopPropagation()}
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="popup-title"
+      >
         <div className={styles.header}>
-          <h2 className={styles.title}>Get In Touch</h2>
-          <button className={styles.closeBtn} onClick={onClose}>
+          <h2 id="popup-title" className={styles.title}>Get In Touch</h2>
+          <button type="button" className={styles.closeBtn} onClick={handleClose}>
             ×
           </button>
         </div>

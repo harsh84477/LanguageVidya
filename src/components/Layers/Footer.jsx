@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import styles from "./Footer.module.css";
 
 export default function Footer() {
@@ -12,7 +13,7 @@ export default function Footer() {
         <div className={styles.brandCol}>
           <div className={styles.logoRow}>
   <div className={styles.logoMark}>
-    <img src="/uploads/icons/ShotLOGO.png" alt="Language Vidya Logo" />
+    <Image src="/uploads/icons/ShotLOGO.png" alt="Language Vidya Logo" width={35} height={35} />
   </div>
   <span className={styles.brandName}>Language Vidya</span>
 </div>

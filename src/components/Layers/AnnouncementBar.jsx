@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import styles from './AnnouncementBar.module.css'
 
 const DEFAULT_MESSAGES = [
@@ -28,22 +28,27 @@ export default function AnnouncementBar({ messages }) {
 
   const [index, setIndex] = useState(0)
   const [visible, setVisible] = useState(true)
+  const timeoutRef = useRef(null)
 
   useEffect(() => {
     if (msgs.length <= 1) return
 
     const interval = setInterval(() => {
-      // fade out
+      // fade out before swapping the message
       setVisible(false)
 
-      // change text, then fade in
-      setTimeout(() => {
+      timeoutRef.current = window.setTimeout(() => {
         setIndex((prev) => (prev + 1) % msgs.length)
         setVisible(true)
-      }, 300)
+      }, 280)
     }, 5000)
 
-    return () => clearInterval(interval)
+    return () => {
+      clearInterval(interval)
+      if (timeoutRef.current) {
+        clearTimeout(timeoutRef.current)
+      }
+    }
   }, [msgs.length])
 
   return (

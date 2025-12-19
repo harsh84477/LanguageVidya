@@ -42,7 +42,7 @@ export default function FestiveOffers() {
             designed to upgrade your English and career confidence.
           </p>
 
-          <button className={styles.bookButton}>Live now · Limited period</button>
+          <button type="button" className={styles.bookButton}>Live now · Limited period</button>
         </div>
 
         {/* Right: glass offer cards */}
@@ -66,7 +66,7 @@ export default function FestiveOffers() {
               
             ))}
 <div className={styles.bottomCtaRow}>
-          <button className={styles.bookButton}>Book your slot now</button>
+          <button type="button" className={styles.bookButton}>Book your slot now</button>
           <p className={styles.note}>
             * Offers valid only between 15 December and 15 January on eligible Language Vidya courses.
           </p>

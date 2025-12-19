@@ -1,14 +1,7 @@
 "use client";
 
 import styles from "./HeroSection.module.css";
-
-const courses = [
-  { code: "1", name: "Basic Spoken English Course" },
-  { code: "2", name: "Basic to Communicable English" },
-  { code: "3", name: "Kids English Mastery Program" },
-  { code: "4", name: "Business English Course" },
-  { code: "5", name: "Advanced Spoken English Courses" },
-];
+import { COURSE_CATALOG } from "./data/courseCatalog";
 
 export default function HeroSection() {
   return (
@@ -41,7 +34,7 @@ export default function HeroSection() {
               </p>
 
              <div className={styles.right}>
-          {courses.map((course) => (
+          {COURSE_CATALOG.map((course) => (
             <button
               key={course.code}
               className={styles.langPill}

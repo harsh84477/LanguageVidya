@@ -33,6 +33,23 @@ const REVIEWS = [
   },
 ];
 
+const AVATAR_COLORS = [
+  "#A62455",
+  "#1F3D7A",
+  "#F29A2E",
+  "#7B275C",
+  "#111827",
+];
+
+const getInitials = (name = "") =>
+  name
+    .split(" ")
+    .filter(Boolean)
+    .slice(0, 2)
+    .map((part) => part[0])
+    .join("")
+    .toUpperCase();
+
 function Stars({ rating }) {
   return (
     <div className={styles.stars} aria-label={`${rating} stars`}>
@@ -66,13 +83,29 @@ export default function ReviewsSection() {
                 key={`${review.name}-${review.timeAgo}-${index}`}
                 className={styles.card}
               >
-                <Stars rating={review.rating} />
+                <div className={styles.cardHeader}>
+                  <div
+                    className={styles.avatar}
+                    style={{
+                      background: `linear-gradient(135deg, ${
+                        AVATAR_COLORS[index % AVATAR_COLORS.length]
+                      } 0%, ${
+                        AVATAR_COLORS[(index + 1) % AVATAR_COLORS.length]
+                      } 100%)`,
+                    }}
+                    aria-hidden="true"
+                  >
+                    {getInitials(review.name)}
+                  </div>
+                  <div className={styles.meta}>
+                    <span className={styles.name}>{review.name}</span>
+                    <time className={styles.time}>{review.timeAgo}</time>
+                  </div>
+                  <Stars rating={review.rating} />
+                </div>
+
                 <h3 className={styles.title}>{review.title}</h3>
                 <p className={styles.text}>{review.text}</p>
-                <footer className={styles.footer}>
-                  <span className={styles.name}>{review.name}</span>
-                  <time className={styles.time}>{review.timeAgo}</time>
-                </footer>
               </article>
             ))}
           </div>

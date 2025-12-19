@@ -5,6 +5,7 @@ import { useState, useEffect } from "react";
 import HeroSection from "@/components/Layers/HeroSection";
 import styles from './page.module.css'
 import Image from "next/image";
+import Aipage from "@/components/Layers/Aipage";
 import EnglishCourseBenefits from "@/components/Layers/EnglishCourseBenefits";
 import WhoCanLearn from "@/components/Layers/WhoCanLearn";
 import OnlineCourses from "@/components/Layers/OnlineCourses";
@@ -16,6 +17,7 @@ import TimelineSection from "@/components/Layers/TimelineSection";
 import FestiveOffers from "@/components/Layers/FestiveOffer";
 import StatsSection from "@/components/Layers/StatsSection";
 import PopupForm from "@/components/Layers/PopupForm";
+
 
 const mandalaPositions = [
   { className: styles.heroMandala, pos: "top", },
@@ -64,29 +66,26 @@ export default function Home() {
         </div>
       ))} 
       
-      <HeroSection />
-     <StatsSection/>
-      <LookingFor />
-     <TimelineSection />
-     
-    <WhoCanLearn />
-      <ReviewsSection />
-<EnglishCourseBenefits />
-      <FestiveOffers />
-       
-      {/* <OnlineCourses /> */}
-     
-      <PracticeHero />
-      {/* <MotivationSection /> */}
-      
-     
-      {/* <TeachersSection/> */}
-      
+      <div className={styles.contentRail}>
+        <HeroSection />
+        <StatsSection />
+        <LookingFor />
+        <TimelineSection />
+        <WhoCanLearn />
+        <ReviewsSection />
+        <EnglishCourseBenefits />
+        <FestiveOffers />
+        <Aipage />
+        {/* <OnlineCourses /> */}
+        <PracticeHero />
+        {/* <MotivationSection /> */}
+        {/* <TeachersSection/> */}
+      </div>
     </div>
-    
-    <PopupForm 
-      isOpen={showPopup} 
-      onClose={() => setShowPopup(false)} 
+
+    <PopupForm
+      isOpen={showPopup}
+      onClose={() => setShowPopup(false)}
     />
     </>
   );

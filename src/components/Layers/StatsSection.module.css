@@ -17,8 +17,7 @@
 
   /* Glassmorphism background (semi‑transparent so mandala shows & blurs) */
     background: #ffe4e4b6;
-  backdrop-filter: blur(28px);
-  -webkit-backdrop-filter: blur(28px);
+  backdrop-filter: blur(2px);
 
   /* Glass border + inner shine */
   border-radius: 20px;

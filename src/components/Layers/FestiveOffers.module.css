@@ -16,12 +16,12 @@
 
 /* SECTION – glass panel on mandala background */
 .section {
+  backdrop-filter: blur(2px);
   margin-top: 20px;
   margin-bottom: 20px;
 
   background: rgba(200, 157, 157, 0.276);
-  backdrop-filter: blur(28px);
-  -webkit-backdrop-filter: blur(28px);
+ 
 
   border-radius: 20px;
   border: 1px solid rgba(255, 255, 255, 0.32);
@@ -93,7 +93,7 @@
   line-height: 1.7;
   color: #4B5563;
 }
-badge
+
 /* PRIMARY RIBBON CTA – reuse hero gradient */
 .ribbonCta {
   margin-top: 1.8rem;
@@ -141,7 +141,6 @@ badge
 
   background: rgba(255, 255, 255, 0.94);
   backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
 
   border: 1px solid rgba(166, 36, 85, 0.14);
   box-shadow: var(--shadow-md);
