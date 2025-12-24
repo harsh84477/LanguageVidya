@@ -383,7 +383,7 @@
   }
 
   .heading {
-    font-size: 1.5rem;
+    /* font-size: 1.5rem; */
   }
 
   .track {
@@ -440,7 +440,7 @@
   }
 
   .heading {
-    font-size: 1.25rem;
+    /* font-size: 1.25rem; */
   }
 
   .subheading {
@@ -491,7 +491,7 @@
   }
 
   .heading {
-    font-size: 1.3rem;
+    /* font-size: 1.3rem; */
   }
 
   .node {
@@ -512,7 +512,7 @@
    ======================================== */
 @media (max-width: 400px) {
   .heading {
-    font-size: 1.1rem;
+    /* font-size: 1.1rem; */
   }
 
   .node {
