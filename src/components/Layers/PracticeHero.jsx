@@ -38,7 +38,7 @@ export default function PracticeHero() {
     />
             </div>
             <p className={styles.status}>Ready when you are</p>
-            <button type="button" className={styles.ctaButton}>Start Free Test</button>
+            <a href="/not-found" className={styles.ctaButton}>Start Free Test</a>
             <p className={styles.cardNote}>
               5–7 minutes • Instant results • No payment required
             </p>

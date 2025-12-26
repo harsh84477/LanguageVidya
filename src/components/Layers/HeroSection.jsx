@@ -15,8 +15,17 @@ export default function HeroSection() {
             Build fluent, natural English through guided practice, real-life conversations, and our AI-powered speaking tutor — designed specially for Indian learners.
           </p>
           <div className={styles.actions}>
-            <a href="#sessions" className={styles.primaryButton}>Unlock Your Learning Advantage</a>
-            <a href="#languages" className={styles.secondaryLink}>Book a Session →</a>
+            <a
+              href="https://wa.me/919217239714"
+              target="_blank"
+              rel="noreferrer"
+              className={styles.primaryButton}
+            >
+              Unlock Your Learning Advantage
+            </a>
+            <a href="/contact-us" className={styles.secondaryLink}>
+              Book a Session →
+            </a>
           </div>
           <p className={styles.trustBadge}>Trusted by 3000+ learners · No sign-up required</p>
         </div>

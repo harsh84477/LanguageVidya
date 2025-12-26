@@ -19,8 +19,10 @@ Start practising English the smart way.
 Talk in real time with our AI-powered speaking avatar and build fluent, natural English through guided conversations, instant responses, and judgement-free practice — anytime you want
   </p>
   <div className={styles.actions}>
-    <a href="#sessions" className={styles.primaryButton}>Start Practicing</a>
-    <a href="#languages" className={styles.secondaryLink}>Book a Session →</a>
+    <a href="/not-found" className={styles.primaryButton}>
+      Start Practicing
+    </a>
+    <a href="tel:+919217239714" className={styles.secondaryLink}>Book a Session →</a>
   </div>
   {/* ✅ Improvement 4 */}
   <p className={styles.trustBadge}>Trusted by 3000+ learners · No sign-up required</p>
@@ -43,7 +45,9 @@ Talk in real time with our AI-powered speaking avatar and build fluent, natural 
               />
             </div>
             <p className={styles.status}>Ready when you are.</p>
-            <button type="button" className={styles.ctaButton}>Start Practicing</button>
+            <a href="/not-found" className={styles.ctaButton}>
+              Start Practicing
+            </a>
             <p className={styles.cardNote}>
                  No judgement · No pressure · Learn at your own pace
             </p>

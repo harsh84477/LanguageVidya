@@ -13,8 +13,15 @@ export default function FinalCta() {
         </div>
 
         <div className={styles.actions}>
-          <button type="button" className={styles.primaryCta}>Book My Free Counseling Call</button>
-          <button type="button" className={styles.secondaryCta}>Help Me Choose the Right Course</button>
+          <a
+            href="tel:+919217239714"
+            className={styles.primaryCta}
+          >
+            Book My Free Counseling Call
+          </a>
+          <a href="/contact-us" className={styles.secondaryCta}>
+            Help Me Choose the Right Course
+          </a>
         </div>
       </div>
     </section>

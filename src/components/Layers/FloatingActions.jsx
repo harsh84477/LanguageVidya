@@ -12,7 +12,7 @@ const ACTIONS = [
     variant: "fab-ai",
   },
   {
-    href: "https://wa.me/918527468533",
+    href: "https://wa.me/919217239714",
     label: "Chat on WhatsApp",
     icon: FaWhatsapp,
     variant: "fab-whatsapp",
@@ -26,7 +26,7 @@ const ACTIONS = [
     external: true,
   },
   {
-    href: "tel:+918527468533",
+    href: "tel:+919217239714",
     label: "Call us",
     icon: FaPhoneAlt,
     variant: "fab-phone",

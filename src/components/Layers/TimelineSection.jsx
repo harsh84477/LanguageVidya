@@ -105,12 +105,17 @@ export default function TimelineSection() {
               </div>
             </div>
           </div>
-        </div>\
+        </div>
         
       <div className={styles.ctaRow}>
-        <button type="button" className={styles.primaryCta}>
+        <a
+          href="https://wa.me/919217239714"
+          target="_blank"
+          rel="noreferrer"
+          className={styles.primaryCta}
+        >
           See How We Take You From Beginner to Job-Ready
-        </button>
+        </a>
         <p className={styles.ctaNote}>Structured. Simple. Effective.</p>
       </div>
        

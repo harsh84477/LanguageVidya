@@ -35,9 +35,9 @@ export default function LookingFor() {
         </div>
 
          <div className={styles.ctaRow}>
-          <button type="button" className={styles.primaryCta}>
+          <a href="/contact-us" className={styles.primaryCta}>
             Choose the Skill That Gets You Hired
-          </button>
+          </a>
           <p className={styles.ctaNote}>Not sure? We'll guide you.</p>
         </div>
 

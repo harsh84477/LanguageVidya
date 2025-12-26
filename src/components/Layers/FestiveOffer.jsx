@@ -42,7 +42,14 @@ export default function FestiveOffers() {
             designed to upgrade your English and career confidence.
           </p>
 
-          <button type="button" className={styles.bookButton}>Reserve Your Seat Before It's Gone</button>
+          <a
+            href="https://wa.me/919217239714"
+            target="_blank"
+            rel="noreferrer"
+            className={styles.bookButton}
+          >
+            Reserve Your Seat Before It's Gone
+          </a>
         </div>
 
         {/* Right: glass offer cards */}
@@ -66,7 +73,7 @@ export default function FestiveOffers() {
               
             ))}
 <div className={styles.bottomCtaRow}>
-          <button type="button" className={styles.bookButton}>Lock Your Price Today</button>
+          <a href="tel:+919217239714" className={styles.bookButton}>Lock Your Price Today</a>
           <p className={styles.note}>
             Limited seats. High demand. * Offers valid only between 15 December and 15 January on eligible Language Vidya courses.
           </p>

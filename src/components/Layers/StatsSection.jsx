@@ -73,16 +73,21 @@ export default function StatsSection() {
       <div className={styles.statsContainer}>
         <div className={styles.statsHeader}>
           <p className={styles.statsBadge}>Our Impact</p>
-          <h2>Numbers that speak for us</h2>
+          <h2>Numbers That Speak For Us</h2>
           <p className={styles.statsSubtitle}>
             Learners trust Language Vidya to improve their English and communication skills.
           </p>
         </div>
 
         <div className={styles.ctaRow}>
-          <button type="button" className={styles.primaryCta}>
+          <a
+            href="https://wa.me/919217239714"
+            target="_blank"
+            rel="noreferrer"
+            className={styles.primaryCta}
+          >
             Why 25,000+ Learners Chose Us
-          </button>
+          </a>
           <p className={styles.ctaNote}>These aren't ads, these are results.</p>
         </div>
 

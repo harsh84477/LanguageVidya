@@ -73,9 +73,14 @@ export default function ReviewsSection() {
         </h2>
 
         <div className={styles.ctaRow}>
-          <button type="button" className={styles.primaryCta}>
+          <a
+            href="https://wa.me/919217239714"
+            target="_blank"
+            rel="noreferrer"
+            className={styles.primaryCta}
+          >
             Watch How Careers Actually Changed
-          </button>
+          </a>
           <p className={styles.ctaNote}>Your story could be next.</p>
         </div>
 

@@ -48,7 +48,7 @@ export default function FaqSection() {
               Everything you need to know about live classes, AI practice, schedules, and certificates. Still unsure? Reach out and we will guide you.
             </p>
           </div>
-          <a className={styles.cta} href="/contact-us">Talk to us →</a>
+          <a href="/contact-us" className={styles.cta}>Talk to us →</a>
         </div>
 
         <div className={styles.list}>

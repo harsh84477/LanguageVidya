@@ -16,7 +16,6 @@ import FestiveOffers from "@/components/Layers/FestiveOffer";
 import StatsSection from "@/components/Layers/StatsSection";
 import PopupForm from "@/components/Layers/PopupForm";
 import FaqSection from "@/components/Layers/FaqSection";
-import PlacementCta from "@/components/Layers/PlacementCta";
 import FinalCta from "@/components/Layers/FinalCta";
 
 
@@ -77,17 +76,15 @@ export default function Home() {
         <StatsSection />
         <LookingFor />
         <TimelineSection />
-        {/* <PlacementCta /> */}
+      
         <WhoCanLearn />
         <ReviewsSection />
         <EnglishCourseBenefits />
         <FestiveOffers />
         <Aipage />
          <FinalCta />
-        {/* <OnlineCourses /> */}
-        <PracticeHero />
-        {/* <MotivationSection /> */}
-        {/* <TeachersSection/> */}
+          <PracticeHero />
+          
         <FaqSection />
        
       </div>
